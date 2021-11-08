@@ -16,6 +16,9 @@ class Register{
         string id; //admin
         string telefono; //cliente
         string direccion; //cliente // Usar getline
+
+        void registroPrincipal();
+		void registrarse();
 };
 
 class Login{
@@ -70,7 +73,6 @@ void Register::registroPrincipal()
             registrarse();
             break;
 		case 2:
-			hacerpedido();
             break;
         case 3:
             break;
@@ -91,15 +93,16 @@ void Register::registrarse()
     {
         cout<<"\t\t\t\t***Registrar a un cliente***\t\t\t\t\n\n";
         fflush(stdin);
-        cout<<"Ingresa la clave del cliente: ";
+        system("cls");
+        cout<<"Ingrese su contrasena: ";
         getline(cin,auxCodigo);
-        if(auxCodigo=="")
+        if(auxCodigo == "")
             do
             {
-                cout<<"Clave de cliente no v\240lido!, intentalo nuevamente: ";
+                cout<<"Contrasena no v\240lido!, intentalo nuevamente: ";
                 getline(cin,auxCodigo);
             }
-            while(auxCodigo=="");
+            while(auxCodigo == "");
         do
         {
             verificador.seekg(0);
@@ -111,28 +114,27 @@ void Register::registrarse()
                 getline(verificador,telefono);
                 getline(verificador,dni);
 
-                if(contrasena==auxCodigo)
+                if(contrasena == auxCodigo)
                 {
                     coincidencia=true;
                     cout<<"\n\nYa existe un cliente con esa clave!\n\n";
                     cout<<"El cliente con esa clave es: "<<usuario<<"\n\n";
                     cout<<"Ingresa una clave v\240lido!: ";
                     getline(cin,auxCodigo);
-                    if(auxCodigo=="")
+                    if(auxCodigo == "")
                         do
                         {
                             cout<<"\nC de cliente no v\240lido!, intentalo nuevamente: ";
                             getline(cin,auxCodigo);
                         }
-                        while(auxCodigo=="");
-
+                        while(auxCodigo == "");
                     break;
                 }
 
                 getline(verificador,contrasena);
             }
 
-            if(verificador.eof()&&auxCodigo!=contrasena)
+            if(verificador.eof()&& auxCodigo != contrasena)
                 coincidencia=false;
 
         }
@@ -177,19 +179,18 @@ void Register::registrarse()
 
 int main()
 {
-    system ("color f0");
 	system ("cls");
 	int cliente_o_admin;
-	cout<<"\nSi es administrador ingrese el numero 1\n";
-	cout<<"\nSi es cliente ingrese el numero 2\n";
-	
+	cout<<"\nSi es administrador ingrese el numero 1";
+	cout<<"\nSi es cliente ingrese el numero 2";
+
 	while(true){
 		cout<<"\nNumero: "; cin>>cliente_o_admin;
-		if (cliente_o_admin==1){
+		if (cliente_o_admin == 1){
 			cout<<"\nEres el admin\n";
 			break;
 		}
-		else if (cliente_o_admin==2){
+		else if (cliente_o_admin == 2){
 			Register inicio;
 			inicio.registroPrincipal();
 			break;
