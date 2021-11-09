@@ -23,20 +23,88 @@ class Register{
 
 class Login{
     public:
-        string usuario; //cliente y admin
-        string contrasena; //cliente y admin
-        string dni; //cliente
-        string id; //admin
-        string telefono; //cliente
-        string direccion; //cliente
+        void loguearse_cli(){
+            string usuario; //cliente y admin
+            string contrasena; //cliente y admin
+            string dni; //cliente
+            //string id; //admin
+            string telefono; //cliente
+            string direccion; //cliente
+            string usuaux;
+            string contraux;
+            bool encontrado = false;
+            ifstream Cli_lec("clientes.txt", ios::in);
+            cout << "<----- LogIn ----->" << endl;
+            cout << "Usuario: ";
+            cin >> usuaux;
+            cout << "Contrasena: ";
+            cin >> contraux;
+            while(!Cli_lec.eof() && !encontrado){
+                getline(Cli_lec,contrasena);
+                getline(Cli_lec,usuario);
+                getline(Cli_lec,direccion);
+                getline(Cli_lec,telefono);
+                getline(Cli_lec,dni);
+                if (usuario == usuaux && contrasena == contraux){
+                    cout << "Bienvenidos" << endl;
+                    encontrado = true;
+                }
+            }
+            if (usuario != usuaux && contrasena == contraux){
+                cout << "El usuario no es correcto..." << endl;
+            }else if ( usuario == usuaux && contrasena != contraux){
+                cout << "La contrasena no es correcta..." << endl;
+            }else if (usuario != usuaux && contrasena != contraux){
+                cout << "El usuario y contrasena no son correctos..." << endl;
+            }
+            Cli_lec.close();
+            system("pause");
+        }
+
+    /*void loguearse_admin(){
+        string usu;
+        string contra;
+        string id;
         string usuaux;
-        string contraux;
+        string contraaux;
+        bool encontrado = false;
+        Admin_lec.open("Admin.txt", ios::in);
+        cout << "<----- LogIn ----->" << endl;
+        cout << "Usuario: ";
+        cin >> usuaux;
+        cout << "Contrasena: ";
+        cin >> contraaux;
+        Admin_lec>>usu;
+        while(!Admin_lec.eof() && !encontrado){
+            Admin_lec>>contra;
+            Admin_lec>>id;
+            if (usu == usuaux && contra == contraaux){
+                cout << "Bienvenidos" << endl;
+                encontrado = true;
+            }
+            Admin_lec>>usu;
+        }
+        if (usu != usuaux && contra == contraaux){
+            cout << "El usuario no es correcto..." << endl;
+        }else if ( usu == usuaux && contra != contraaux){
+            cout << "La contrasena no es correcta..." << endl;
+        }else if (usu != usuaux && contra != contraaux){
+            cout << "El usuario y contrasena no son correctos..." << endl;
+        }
+        Admin_lec.close();
+        system("pause");
+    }*/
 };
 
 class Cliente{
     public:
         Register reg;
         Login log;
+
+        void Login(){
+            system("cls");
+            log.loguearse_cli();
+        }
 };
 
 class Administrador{
@@ -49,37 +117,19 @@ class Usuario{
     public:
         Administrador admin;
         Cliente cli;
-};
 
-void Register::registroPrincipal()
-{
-	system("cls");
-    int opcion;
-    do
-    {
-        cout<<"\t\t\t\t***Registro de clientes***\t\t\t\t\n\n";
-        cout<<"1. Presiona 1 para registrarse\n\n";
-		cout<<"2. Presiona 2 para hacer un pedido\n\n";
-		cout<<"3. Presiona 3 para salir\n\n";
-        cout<<"Opci\242n: \n\n";
-        cin>>opcion;
-        switch(opcion)
-        {
-        default:
-            cout<<"Ha ingresado una opci\242n no valida!\n\n";
-            break;
-
-        case 1:
-            registrarse();
-            break;
-		case 2:
-            break;
-        case 3:
-            break;
+        int menu(){
+            int num;
+            system("cls");
+            cout << "<<-------Tipo de Usuario------->>" << endl;
+            cout << "1. Administrador" << endl;
+            cout << "2. Cliente" << endl;
+            cout << "3. Retornar al Menu"<< endl;
+            cout << "Opcion: ";
+            cin >> num;
+            return num;
         }
-    }
-    while(opcion!=3);
-}
+};
 
 void Register::registrarse()
 {
@@ -91,7 +141,7 @@ void Register::registrarse()
     escritura.open("clientes.txt",ios::app);
     if(escritura.is_open()&&verificador.is_open())
     {
-        cout<<"\t\t\t\t***Registrar a un cliente***\t\t\t\t\n\n";
+        cout<<"<----- Registrarse ----->";
         fflush(stdin);
         system("cls");
         cout<<"Ingrese su contrasena: ";
@@ -117,14 +167,14 @@ void Register::registrarse()
                 if(contrasena == auxCodigo)
                 {
                     coincidencia=true;
-                    cout<<"\n\nYa existe un cliente con esa clave!\n\n";
-                    cout<<"El cliente con esa clave es: "<<usuario<<"\n\n";
+                    cout<<"Ya existe un cliente con esa clave!" << endl;
+                    cout<<"El cliente con esa clave es: "<< usuario << endl;
                     cout<<"Ingresa una clave v\240lido!: ";
                     getline(cin,auxCodigo);
                     if(auxCodigo == "")
                         do
                         {
-                            cout<<"\nC de cliente no v\240lido!, intentalo nuevamente: ";
+                            cout << "\nCodigo de cliente no v\240lido!, intentalo nuevamente: ";
                             getline(cin,auxCodigo);
                         }
                         while(auxCodigo == "");
@@ -141,30 +191,25 @@ void Register::registrarse()
         while(coincidencia==true);
         system("cls");
         contrasena=auxCodigo;
-        cout<<"\t\t\t\t***Registrar a un cliente***\t\t\t\t\n\n";
-        cout<<"Ingresa la clave del cliente: ";
-        cout<<contrasena;
-        cout<<"\n\n";
+        cout<<"<----- Registrarse como Cliente ----->" << endl;
+        cout<<"Contrasena: ";
+        cout<<contrasena << endl;
         fflush(stdin);
-        cout<<"Ingresa el nombre del cliente: ";
+        cout<<"Ingresa tu Nombre de Usuario: ";
         getline(cin,usuario);
-        cout<<"\n\n";
         fflush(stdin);
-        cout<<"Ingresa la direccion del cliente: ";
+        cout<<"Ingresa tu Direccion: ";
         getline(cin,direccion);
-        cout<<"\n\n";
         fflush(stdin);
-        cout<<"Ingresa el n\243mero de telefono del cliente: ";
+        cout<<"Ingresa tu N\243mero de Telefono: ";
         getline(cin,telefono);
-        cout<<"\n\n";
         fflush(stdin);
-		cout<<"Ingresa el DNI del cliente: ";
+		cout<<"Ingresa tu DNI: ";
         getline(cin,dni);
-        cout<<"\n\n";
 
         escritura<<contrasena<<"\n"<<usuario<<"\n"<<direccion<<"\n"<<telefono<<"\n"<<dni<<"\n";
 
-        cout<<"El registro se ha completado correctamente.\n\n";
+        cout<<"El registro se ha completado correctamente." << endl;
     }
 
     else
@@ -177,28 +222,63 @@ void Register::registrarse()
 	pausa();
 }
 
+int menu(){
+    int x;
+    system("cls");
+    cout << "<<-------Bienvenido------->>" << endl;
+    cout << "1. Ingresar" << endl;
+    cout << "2. Registrarse" << endl;
+    cout << "3. Salir" << endl;
+    cout << "Opcion: ";
+    cin >> x;
+    return x;
+}
+
 int main()
 {
 	system ("cls");
-	int cliente_o_admin;
-	cout<<"\nSi es administrador ingrese el numero 1";
-	cout<<"\nSi es cliente ingrese el numero 2";
-
-	while(true){
-		cout<<"\nNumero: "; cin>>cliente_o_admin;
-		if (cliente_o_admin == 1){
-			cout<<"\nEres el admin\n";
-			break;
-		}
-		else if (cliente_o_admin == 2){
-			Register inicio;
-			inicio.registroPrincipal();
-			break;
-		}
-		else {
-			cout<<"El numero es invalido, ingrese de nuevo: ";
-		}
-	}
+	int op;
+    do{
+        system("cls");
+        op = menu();
+        switch(op){
+            case 1:
+                int op2;
+                do{
+                    Usuario user1;
+                    op2 = user1.menu();
+                    switch(op2){
+                        case 1:
+                            break;
+                        case 2:
+                            user1.cli.Login();
+                            break;
+                    }
+                }while(op2 != 3);
+                break;
+            case 2:
+                system("cls");
+                int cliente_o_admin;
+                do{
+                    cout << "<<-------Tipo de Usuario------->>" << endl;
+                    cout << "1. Administrador" << endl;
+                    cout << "2. Cliente" << endl;
+                    cout << "3. Retornar al Menu"<< endl;
+                    cout<<"Opcion: ";
+                    cin>> cliente_o_admin;
+                    switch(cliente_o_admin){
+                    case 1:
+                        cout<<"\nEres el admin\n";
+                        break;
+                    case 2:
+                        Register inicio;
+                        inicio.registrarse();
+                        break;
+                    }
+                }while(cliente_o_admin != 3);
+                break;
+        }
+    }while(op != 3);
     return 0;
 }
 void error()
