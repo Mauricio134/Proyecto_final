@@ -5,6 +5,8 @@
 
 using namespace std;
 
+ifstream Cli_lec;
+
 void pausa();
 void error();
 
@@ -33,31 +35,32 @@ class Login{
             string usuaux;
             string contraux;
             bool encontrado = false;
-            ifstream Cli_lec("clientes.txt", ios::in);
+            Cli_lec.open("clientes.txt", ios::in);
+            ofstream aux("auxiliar.txt", ios::out | ios::app);
             cout << "<----- LogIn ----->" << endl;
             cout << "Usuario: ";
             cin >> usuaux;
             cout << "Contrasena: ";
             cin >> contraux;
+            Cli_lec >> contrasena;
             while(!Cli_lec.eof() && !encontrado){
-                getline(Cli_lec,contrasena);
-                getline(Cli_lec,usuario);
+                Cli_lec >> usuario;
+                Cli_lec.ignore(10000, '\n');
                 getline(Cli_lec,direccion);
-                getline(Cli_lec,telefono);
-                getline(Cli_lec,dni);
+                Cli_lec >> telefono;
+                Cli_lec >> dni;
                 if (usuario == usuaux && contrasena == contraux){
                     cout << "Bienvenidos" << endl;
                     encontrado = true;
                 }
+
+                Cli_lec >> contrasena;
             }
-            if (usuario != usuaux && contrasena == contraux){
-                cout << "El usuario no es correcto..." << endl;
-            }else if ( usuario == usuaux && contrasena != contraux){
-                cout << "La contrasena no es correcta..." << endl;
-            }else if (usuario != usuaux && contrasena != contraux){
-                cout << "El usuario y contrasena no son correctos..." << endl;
+            if (usuario != usuaux || contrasena != contraux){
+                cout << "El usuario y/o contrasena no es correcto..." << endl;
             }
             Cli_lec.close();
+            aux.close();
             system("pause");
         }
 
@@ -131,26 +134,25 @@ class Usuario{
         }
 };
 
-void Register::registrarse()
-{
+void Register::registrarse(){
     ofstream escritura;
     ifstream verificador;
     string auxCodigo;
     bool coincidencia=false;
     verificador.open("clientes.txt",ios::in);
-    escritura.open("clientes.txt",ios::app);
+    escritura.open("clientes.txt",ios::out | ios::app);
     if(escritura.is_open()&&verificador.is_open())
     {
         cout<<"<----- Registrarse ----->";
         fflush(stdin);
         system("cls");
         cout<<"Ingrese su contrasena: ";
-        getline(cin,auxCodigo);
+        cin >> auxCodigo;
         if(auxCodigo == "")
             do
             {
                 cout<<"Contrasena no v\240lido!, intentalo nuevamente: ";
-                getline(cin,auxCodigo);
+                cin >> auxCodigo;
             }
             while(auxCodigo == "");
         do
@@ -170,12 +172,12 @@ void Register::registrarse()
                     cout<<"Ya existe un cliente con esa clave!" << endl;
                     cout<<"El cliente con esa clave es: "<< usuario << endl;
                     cout<<"Ingresa una clave v\240lido!: ";
-                    getline(cin,auxCodigo);
+                    cin >> auxCodigo;
                     if(auxCodigo == "")
                         do
                         {
                             cout << "\nCodigo de cliente no v\240lido!, intentalo nuevamente: ";
-                            getline(cin,auxCodigo);
+                            cin >> auxCodigo;
                         }
                         while(auxCodigo == "");
                     break;
@@ -190,24 +192,24 @@ void Register::registrarse()
         }
         while(coincidencia==true);
         system("cls");
-        contrasena=auxCodigo;
+        contrasena = auxCodigo;
         cout<<"<----- Registrarse como Cliente ----->" << endl;
         cout<<"Contrasena: ";
-        cout<<contrasena << endl;
+        cout<< contrasena << endl;
         fflush(stdin);
         cout<<"Ingresa tu Nombre de Usuario: ";
-        getline(cin,usuario);
+        cin >> usuario;
         fflush(stdin);
         cout<<"Ingresa tu Direccion: ";
         getline(cin,direccion);
         fflush(stdin);
         cout<<"Ingresa tu N\243mero de Telefono: ";
-        getline(cin,telefono);
+        cin >> telefono;
         fflush(stdin);
 		cout<<"Ingresa tu DNI: ";
-        getline(cin,dni);
+        cin >> dni;
 
-        escritura<<contrasena<<"\n"<<usuario<<"\n"<<direccion<<"\n"<<telefono<<"\n"<<dni<<"\n";
+        escritura << contrasena <<"\n"<< usuario <<"\n"<< direccion <<"\n"<< telefono <<"\n"<< dni << endl;
 
         cout<<"El registro se ha completado correctamente." << endl;
     }
@@ -281,15 +283,13 @@ int main()
     }while(op != 3);
     return 0;
 }
-void error()
-{
+void error(){
     cout<<"No se pudo abrir el archivo de registros, asegurese que el archivo se encuentre en\n";
     cout<<"la misma ubicaci\242n que el programa o que el archivo de texto se llame: \n";
     cout<<"clientes.txt, si el archivo tiene otro nombre ren\242mbrelo al ya mencionado\n\n";
 }
 
-void pausa()
-{
+void pausa(){
     cout<<"Presiona Enter para continuar...";
     getch();
     system("cls");
