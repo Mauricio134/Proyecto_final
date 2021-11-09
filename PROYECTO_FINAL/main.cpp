@@ -6,6 +6,7 @@
 using namespace std;
 
 ifstream Cli_lec;
+ifstream Admin_lec;
 
 void pausa();
 void error();
@@ -20,7 +21,8 @@ class Register{
         string direccion; //cliente // Usar getline
 
         void registroPrincipal();
-		void registrarse();
+		void registrarse_cli();
+		void registrarse_admin();
 };
 
 class Login{
@@ -36,7 +38,7 @@ class Login{
             string contraux;
             bool encontrado = false;
             Cli_lec.open("clientes.txt", ios::in);
-            ofstream aux("auxiliar.txt", ios::out | ios::app);
+            ofstream aux("clientes.txt", ios::out | ios::app);
             cout << "<----- LogIn ----->" << endl;
             cout << "Usuario: ";
             cin >> usuaux;
@@ -64,39 +66,39 @@ class Login{
             system("pause");
         }
 
-    /*void loguearse_admin(){
-        string usu;
-        string contra;
-        string id;
-        string usuaux;
-        string contraaux;
-        bool encontrado = false;
-        Admin_lec.open("Admin.txt", ios::in);
-        cout << "<----- LogIn ----->" << endl;
-        cout << "Usuario: ";
-        cin >> usuaux;
-        cout << "Contrasena: ";
-        cin >> contraaux;
-        Admin_lec>>usu;
-        while(!Admin_lec.eof() && !encontrado){
-            Admin_lec>>contra;
-            Admin_lec>>id;
-            if (usu == usuaux && contra == contraaux){
-                cout << "Bienvenidos" << endl;
-                encontrado = true;
+		void loguearse_admin(){
+			string usuario_a; //cliente y admin
+            string contrasena_a; //cliente y admin
+            string id; //admin
+            string usuaux_a;
+            string contraux_a;
+            bool encontrado_a = false;
+            Admin_lec.open("Admin.txt", ios::in);
+            ofstream aux("Admin.txt", ios::out | ios::app);
+            cout << "<----- LogIn ----->" << endl;
+            cout << "Usuario: ";
+            cin >> usuaux_a;
+            cout << "Contrasena: ";
+            cin >> contraux_a;
+            Admin_lec >> contrasena_a;
+            while(!Admin_lec.eof() && !encontrado_a){
+                Admin_lec >> usuario_a;
+                Admin_lec.ignore(10000, '\n');
+                getline(Admin_lec,id);
+                if (usuario_a == usuaux_a && contrasena_a == contraux_a){
+                    cout << "Bienvenidos" << endl;
+                    encontrado_a = true;
+                }
+
+                Admin_lec >> contrasena_a;
             }
-            Admin_lec>>usu;
+            if (usuario_a != usuaux_a || contrasena_a != contraux_a){
+                cout << "El usuario y/o contrasena no es correcto..." << endl;
+            }
+            Admin_lec.close();
+            aux.close();
+            system("pause");
         }
-        if (usu != usuaux && contra == contraaux){
-            cout << "El usuario no es correcto..." << endl;
-        }else if ( usu == usuaux && contra != contraaux){
-            cout << "La contrasena no es correcta..." << endl;
-        }else if (usu != usuaux && contra != contraaux){
-            cout << "El usuario y contrasena no son correctos..." << endl;
-        }
-        Admin_lec.close();
-        system("pause");
-    }*/
 };
 
 class Cliente{
@@ -114,6 +116,11 @@ class Administrador{
     public:
         Register reg;
         Login log;
+		
+		void Login(){
+			system("cls");
+			log.loguearse_admin();
+		}
 };
 
 class Usuario{
@@ -134,7 +141,7 @@ class Usuario{
         }
 };
 
-void Register::registrarse(){
+void Register::registrarse_cli(){
     ofstream escritura;
     ifstream verificador;
     string auxCodigo;
@@ -170,8 +177,8 @@ void Register::registrarse(){
                 {
                     coincidencia=true;
                     cout<<"Ya existe un cliente con esa clave!" << endl;
-                    cout<<"El cliente con esa clave es: "<< usuario << endl;
-                    cout<<"Ingresa una clave v\240lido!: ";
+                    //cout<<"El cliente con esa clave es: "<< usuario << endl;  //se elimina esta dado que revela contraseña de otro usuario
+                    cout<<"Ingresa una clave diferente!: ";
                     cin >> auxCodigo;
                     if(auxCodigo == "")
                         do
@@ -223,6 +230,84 @@ void Register::registrarse(){
     verificador.close();
 	pausa();
 }
+void Register::registrarse_admin(){
+    ofstream escritura;
+    ifstream verificador;
+    string auxCodigo;
+    bool coincidencia=false;
+    verificador.open("Admin.txt",ios::in);
+    escritura.open("Admin.txt",ios::out | ios::app);
+    if(escritura.is_open()&&verificador.is_open())
+    {
+        cout<<"<----- Registrarse ----->";
+        fflush(stdin);
+        system("cls");
+        cout<<"Ingrese su contrasena: ";
+        cin >> auxCodigo;
+        if(auxCodigo == "")
+            do
+            {
+                cout<<"Contrasena no v\240lido!, intentalo nuevamente: ";
+                cin >> auxCodigo;
+            }
+            while(auxCodigo == "");
+        do
+        {
+            verificador.seekg(0);
+            getline(verificador,contrasena);
+            while(!verificador.eof())
+            {
+                getline(verificador,usuario);
+
+                if(contrasena == auxCodigo)
+                {
+                    coincidencia=true;
+                    cout<<"Ya existe un administrador con esa clave!" << endl;
+                    //cout<<"El cliente con esa clave es: "<< usuario << endl;  //se elimina esta dado que revela contraseña de otro usuario
+                    cout<<"Ingresa una clave diferente!: ";
+                    cin >> auxCodigo;
+                    if(auxCodigo == "")
+                        do
+                        {
+                            cout << "\nCodigo de administrador no v\240lido!, intentalo nuevamente: ";
+                            cin >> auxCodigo;
+                        }
+                        while(auxCodigo == "");
+                    break;
+                }
+
+                getline(verificador,contrasena);
+            }
+
+            if(verificador.eof()&& auxCodigo != contrasena)
+                coincidencia=false;
+
+        }
+        while(coincidencia==true);
+        system("cls");
+        contrasena = auxCodigo;
+        cout<<"<----- Registrarse como Administrador ----->" << endl;
+        cout<<"Contrasena: ";
+        cout<< contrasena << endl;
+        fflush(stdin);
+        cout<<"Ingresa tu Nombre de Usuario: ";
+        cin >> usuario;
+        fflush(stdin);
+
+        escritura << contrasena <<"\n"<< usuario << endl;
+
+        cout<<"El registro se ha completado correctamente." << endl;
+    }
+
+    else
+    {
+        error();
+    }
+
+    escritura.close();
+    verificador.close();
+	pausa();
+}
 
 int menu(){
     int x;
@@ -238,6 +323,7 @@ int menu(){
 
 int main()
 {
+	system ("color f0");
 	system ("cls");
 	int op;
     do{
@@ -251,6 +337,7 @@ int main()
                     op2 = user1.menu();
                     switch(op2){
                         case 1:
+							user1.admin.Login();
                             break;
                         case 2:
                             user1.cli.Login();
@@ -268,15 +355,15 @@ int main()
                     cout << "3. Retornar al Menu"<< endl;
                     cout<<"Opcion: ";
                     cin>> cliente_o_admin;
+					Register inicio;
                     switch(cliente_o_admin){
-                    case 1:
-                        cout<<"\nEres el admin\n";
-                        break;
-                    case 2:
-                        Register inicio;
-                        inicio.registrarse();
-                        break;
-                    }
+						case 1:
+							inicio.registrarse_admin();
+							break;
+						case 2:	
+							inicio.registrarse_cli();
+							break;
+					}
                 }while(cliente_o_admin != 3);
                 break;
         }
