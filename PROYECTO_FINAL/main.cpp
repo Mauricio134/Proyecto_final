@@ -38,7 +38,6 @@ class Login{
             string contraux;
             bool encontrado = false;
             Cli_lec.open("clientes.txt", ios::in);
-            ofstream aux("clientes.txt", ios::out | ios::app);
             cout << "<----- LogIn ----->" << endl;
             cout << "Usuario: ";
             cin >> usuaux;
@@ -62,7 +61,6 @@ class Login{
                 cout << "El usuario y/o contrasena no es correcto..." << endl;
             }
             Cli_lec.close();
-            aux.close();
             system("pause");
         }
 
@@ -74,7 +72,6 @@ class Login{
             string contraux_a;
             bool encontrado_a = false;
             Admin_lec.open("Admin.txt", ios::in);
-            ofstream aux("Admin.txt", ios::out | ios::app);
             cout << "<----- LogIn ----->" << endl;
             cout << "Usuario: ";
             cin >> usuaux_a;
@@ -83,8 +80,7 @@ class Login{
             Admin_lec >> contrasena_a;
             while(!Admin_lec.eof() && !encontrado_a){
                 Admin_lec >> usuario_a;
-                Admin_lec.ignore(10000, '\n');
-                getline(Admin_lec,id);
+                Admin_lec >> id;
                 if (usuario_a == usuaux_a && contrasena_a == contraux_a){
                     cout << "Bienvenidos" << endl;
                     encontrado_a = true;
@@ -96,7 +92,6 @@ class Login{
                 cout << "El usuario y/o contrasena no es correcto..." << endl;
             }
             Admin_lec.close();
-            aux.close();
             system("pause");
         }
 };
@@ -116,7 +111,7 @@ class Administrador{
     public:
         Register reg;
         Login log;
-		
+
 		void Login(){
 			system("cls");
 			log.loguearse_admin();
@@ -230,6 +225,7 @@ void Register::registrarse_cli(){
     verificador.close();
 	pausa();
 }
+
 void Register::registrarse_admin(){
     ofstream escritura;
     ifstream verificador;
@@ -239,7 +235,7 @@ void Register::registrarse_admin(){
     escritura.open("Admin.txt",ios::out | ios::app);
     if(escritura.is_open()&&verificador.is_open())
     {
-        cout<<"<----- Registrarse ----->";
+        cout<<"<----- Registrar Contrasena ----->";
         fflush(stdin);
         system("cls");
         cout<<"Ingrese su contrasena: ";
@@ -254,10 +250,11 @@ void Register::registrarse_admin(){
         do
         {
             verificador.seekg(0);
-            getline(verificador,contrasena);
+            verificador>>contrasena;
             while(!verificador.eof())
             {
-                getline(verificador,usuario);
+                verificador>>usuario;
+                verificador>>id;
 
                 if(contrasena == auxCodigo)
                 {
@@ -276,7 +273,7 @@ void Register::registrarse_admin(){
                     break;
                 }
 
-                getline(verificador,contrasena);
+                verificador>>contrasena;
             }
 
             if(verificador.eof()&& auxCodigo != contrasena)
@@ -292,9 +289,11 @@ void Register::registrarse_admin(){
         fflush(stdin);
         cout<<"Ingresa tu Nombre de Usuario: ";
         cin >> usuario;
+        cout<<"Ingresa tu ID: ";
+        cin >> id;
         fflush(stdin);
 
-        escritura << contrasena <<"\n"<< usuario << endl;
+        escritura << contrasena <<"\n"<< usuario <<"\n"<< id << endl;
 
         cout<<"El registro se ha completado correctamente." << endl;
     }
@@ -321,9 +320,8 @@ int menu(){
     return x;
 }
 
-int main()
-{
-	system ("color f0");
+int main(){
+	//system ("color f0");
 	system ("cls");
 	int op;
     do{
@@ -360,7 +358,7 @@ int main()
 						case 1:
 							inicio.registrarse_admin();
 							break;
-						case 2:	
+						case 2:
 							inicio.registrarse_cli();
 							break;
 					}
@@ -370,6 +368,7 @@ int main()
     }while(op != 3);
     return 0;
 }
+
 void error(){
     cout<<"No se pudo abrir el archivo de registros, asegurese que el archivo se encuentre en\n";
     cout<<"la misma ubicaci\242n que el programa o que el archivo de texto se llame: \n";
