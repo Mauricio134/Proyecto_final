@@ -20,32 +20,53 @@ class Register{
         string telefono; //cliente
         string direccion; //cliente // Usar getline
 
-        void registroPrincipal();
+        Register(){
+            usuario = "";
+            contrasena = "";
+            dni = "";
+            id = "";
+            telefono = "";
+            direccion = "";
+        }
+
 		void registrarse_cli();
 		void registrarse_admin();
 };
 
 class Login{
     public:
+        string usuario;
+        string contrasena;
+        string dni;
+        string id;
+        string telefono;
+        string direccion;
+        string usuaux;
+        string contraux;
+        bool encontrado;
+
+        Login(){
+            usuario = "";
+            contrasena = "";
+            dni = "";
+            id = "";
+            telefono = "";
+            direccion = "";
+            usuaux = "";
+            contraux = "";
+            encontrado = false;
+        }
+
         void loguearse_cli(){
-            string usuario; //cliente y admin
-            string contrasena; //cliente y admin
-            string dni; //cliente
-            //string id; //admin
-            string telefono; //cliente
-            string direccion; //cliente
-            string usuaux;
-            string contraux;
-            bool encontrado = false;
-            Cli_lec.open("clientes.txt", ios::in);
             cout << "<----- LogIn ----->" << endl;
             cout << "Usuario: ";
             cin >> usuaux;
             cout << "Contrasena: ";
             cin >> contraux;
+            Cli_lec.open("clientes.txt", ios::in);
             Cli_lec >> contrasena;
+            Cli_lec >> usuario;
             while(!Cli_lec.eof() && !encontrado){
-                Cli_lec >> usuario;
                 Cli_lec.ignore(10000, '\n');
                 getline(Cli_lec,direccion);
                 Cli_lec >> telefono;
@@ -54,10 +75,10 @@ class Login{
                     cout << "Bienvenidos" << endl;
                     encontrado = true;
                 }
-
                 Cli_lec >> contrasena;
+                Cli_lec >> usuario;
             }
-            if (usuario != usuaux || contrasena != contraux){
+            if (!encontrado){
                 cout << "El usuario y/o contrasena no es correcto..." << endl;
             }
             Cli_lec.close();
@@ -65,30 +86,24 @@ class Login{
         }
 
 		void loguearse_admin(){
-			string usuario_a; //cliente y admin
-            string contrasena_a; //cliente y admin
-            string id; //admin
-            string usuaux_a;
-            string contraux_a;
-            bool encontrado_a = false;
             Admin_lec.open("Admin.txt", ios::in);
             cout << "<----- LogIn ----->" << endl;
             cout << "Usuario: ";
-            cin >> usuaux_a;
+            cin >> usuaux;
             cout << "Contrasena: ";
-            cin >> contraux_a;
-            Admin_lec >> contrasena_a;
-            while(!Admin_lec.eof() && !encontrado_a){
-                Admin_lec >> usuario_a;
+            cin >> contraux;
+            Admin_lec >> contrasena;
+            while(!Admin_lec.eof() && !encontrado){
+                Admin_lec >> usuario;
                 Admin_lec >> id;
-                if (usuario_a == usuaux_a && contrasena_a == contraux_a){
+                if (usuario == usuaux && contrasena == contraux){
                     cout << "Bienvenidos" << endl;
-                    encontrado_a = true;
+                    encontrado = true;
                 }
 
-                Admin_lec >> contrasena_a;
+                Admin_lec >> contrasena;
             }
-            if (usuario_a != usuaux_a || contrasena_a != contraux_a){
+            if (!encontrado){
                 cout << "El usuario y/o contrasena no es correcto..." << endl;
             }
             Admin_lec.close();
@@ -101,6 +116,10 @@ class Cliente{
         Register reg;
         Login log;
 
+        Cliente(){
+
+        }
+
         void Login(){
             system("cls");
             log.loguearse_cli();
@@ -111,6 +130,10 @@ class Administrador{
     public:
         Register reg;
         Login log;
+
+        Administrador(){
+
+        }
 
 		void Login(){
 			system("cls");
@@ -123,7 +146,11 @@ class Usuario{
         Administrador admin;
         Cliente cli;
 
-        int menu(){
+        Usuario(){
+
+        }
+
+        int menu_usu(){
             int num;
             system("cls");
             cout << "<<-------Tipo de Usuario------->>" << endl;
@@ -321,7 +348,7 @@ int menu(){
 }
 
 int main(){
-	//system ("color f0");
+	system ("color f0");
 	system ("cls");
 	int op;
     do{
@@ -332,7 +359,7 @@ int main(){
                 int op2;
                 do{
                     Usuario user1;
-                    op2 = user1.menu();
+                    op2 = user1.menu_usu();
                     switch(op2){
                         case 1:
 							user1.admin.Login();
