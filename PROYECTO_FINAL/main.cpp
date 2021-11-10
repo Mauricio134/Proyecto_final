@@ -199,7 +199,6 @@ void Register::registrarse_cli(){
                 {
                     coincidencia=true;
                     cout<<"Ya existe un cliente con esa clave!" << endl;
-                    //cout<<"El cliente con esa clave es: "<< usuario << endl;  //se elimina esta dado que revela contraseña de otro usuario
                     cout<<"Ingresa una clave diferente!: ";
                     cin >> auxCodigo;
                     if(auxCodigo == "")
