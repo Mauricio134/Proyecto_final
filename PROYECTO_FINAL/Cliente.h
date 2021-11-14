@@ -11,4 +11,5 @@ class Cliente{
         Cliente();
 
         void Login();
+        void Eliminar_registro();
 };

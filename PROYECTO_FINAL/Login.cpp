@@ -1,4 +1,5 @@
 #include "Login.h"
+#include "Cliente.h"
 
 Loguear::Login(){
     usuario = "";
@@ -27,7 +28,14 @@ void Loguear::loguearse_cli(){
         Cli_lec >> telefono;
         Cli_lec >> dni;
         if (usuario == usuaux && contrasena == contraux){
-            cout << "Bienvenidos" << endl;
+            int op;
+            do{
+                op = menu_cli();
+                switch(op){
+                    case 1:
+                        break;
+                }
+            }while(op != 2);
             encontrado = true;
         }
         Cli_lec >> contrasena;
@@ -52,7 +60,28 @@ void Loguear::loguearse_admin(){
         Admin_lec >> usuario;
         Admin_lec >> id;
         if (usuario == usuaux && contrasena == contraux){
-            cout << "Bienvenidos" << endl;
+            int op;
+            do{
+                Cliente cliente;
+                op = menu_admin();
+                switch(op){
+                    case 1:
+                        break;
+                    case 2:
+                        cliente.Eliminar_registro();
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                }
+            }while(op != 8);
             encontrado = true;
         }
 
@@ -63,4 +92,37 @@ void Loguear::loguearse_admin(){
     }
     Admin_lec.close();
     system("pause");
+}
+
+void Loguear::eliminar(){
+    ifstream Lectura("clientes.txt", ios::in);
+    ofstream aux("Auxiliar.txt", ios::out);
+    if (Lectura.is_open()){
+        cout << "Colocar DNI: ";
+        cin >> dniaux;
+        Lectura >> contrasena;
+        Lectura >> usuario;
+        while(!Lectura.eof()){
+            Lectura.ignore(10000, '\n');
+            getline(Lectura,direccion);
+            Lectura >> telefono;
+            Lectura >> dni;
+            if (dni == dniaux){
+                cout << "Contrasena: " << contrasena <<"\n"<< "Usuario: " << usuario <<"\n"<< "Direccion: " << direccion <<"\n"<< "Telefono: " << telefono <<"\n"<< "DNI: " << dni << endl;
+                cout << "\t!!!! Registro Eliminado !!!!" << endl;
+            } else {
+                aux << contrasena <<"\n"<< usuario <<"\n"<< direccion <<"\n"<< telefono <<"\n"<< dni << endl;
+            }
+            Lectura >> contrasena;
+            Lectura >> usuario;
+        }
+        Lectura.close();
+        aux.close();
+        system("pause");
+    }else{
+        cout << "Error" << endl;
+    }
+
+    remove("clientes.txt");
+    rename("Auxiliar.txt", "clientes.txt");
 }

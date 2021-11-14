@@ -32,6 +32,19 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Admin.cpp" />
+		<Unit filename="Admin.h" />
+		<Unit filename="Cliente.cpp" />
+		<Unit filename="Cliente.h" />
+		<Unit filename="Funcion.cpp" />
+		<Unit filename="Funcion.h" />
+		<Unit filename="Login.cpp" />
+		<Unit filename="Login.h" />
+		<Unit filename="Register.cpp" />
+		<Unit filename="Register.h" />
+		<Unit filename="Suministros.h" />
+		<Unit filename="Usuario.cpp" />
+		<Unit filename="Usuario.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

@@ -11,10 +11,12 @@ class Loguear{
         string direccion;
         string usuaux;
         string contraux;
+        string dniaux;
         bool encontrado;
 
         Login();
 
         void loguearse_cli();
 		void loguearse_admin();
+		void eliminar();
 };
