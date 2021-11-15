@@ -1,0 +1,10 @@
+001
+Leche
+Gloria
+12
+12 kilos
+002
+Huevos
+La calera
+0.50
+13

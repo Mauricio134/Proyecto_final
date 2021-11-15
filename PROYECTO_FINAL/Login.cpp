@@ -1,5 +1,6 @@
 #include "Login.h"
 #include "Cliente.h"
+#include "Suministros.h"
 
 Loguear::Login(){
     usuario = "";
@@ -63,6 +64,7 @@ void Loguear::loguearse_admin(){
             int op;
             do{
                 Cliente cliente;
+                Suministros suministros;
                 op = menu_admin();
                 switch(op){
                     case 1:
@@ -71,10 +73,12 @@ void Loguear::loguearse_admin(){
                         cliente.Eliminar_registro();
                         break;
                     case 3:
+                        suministros.agregar_produ();
                         break;
                     case 4:
                         break;
                     case 5:
+                        suministros.ver_sumi();
                         break;
                     case 6:
                         break;
