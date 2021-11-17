@@ -71,6 +71,7 @@ void Loguear::loguearse_admin(){
                 switch(op){
                     case 1:
                         cliente.Mostrar_registro();
+                        break;
                     case 2:
                         cliente.Eliminar_registro();
                         break;
