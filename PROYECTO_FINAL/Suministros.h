@@ -1,5 +1,5 @@
 #include "Funcion.h"
-#pragma once
+
 
 class Suministros{
     public:

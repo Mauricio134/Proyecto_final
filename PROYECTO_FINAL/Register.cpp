@@ -180,3 +180,43 @@ void Registrar::registrarse_admin(){
     verificador.close();
 	pausa();
 }
+
+void Registrar::mostrar_registro(){
+	system("cls");
+	int i=0;
+    ifstream lectura;
+    lectura.open("clientes.txt",ios::in);
+    if(lectura.is_open())
+    {
+        cout<<"\t\t\t\t***Listado de todos los Usuarios (Clientes)***\t\t\t\t\n\n";
+        getline(lectura,contrasena);
+        while(!lectura.eof())
+        {
+            i++;
+            getline(lectura,tipo);;
+            getline(lectura,marca);
+			getline(lectura,precio);;
+            getline(lectura,cantidad);
+            cout<<"Contrasena: "<<contrasena<<"\t";
+            cout<<"Nombre: "<<usuario<<"\t";
+			cout<<"Direccion: "<<direccion<<"\t";
+			cout<<"Telefono"<<telefono<<"\t";
+            cout<<"DNI: "<<dni<<endl;
+            cout<<"\n\n";
+            getline(lectura,contrasena);
+        }
+
+        if(i==1){
+            cout<<"Hay un solo usuario(cliente) registrado \n\n";
+        }
+        else{
+            cout<<"Hay un total de "<< i <<" Usuarios(clientes) registrados \n\n";
+        }
+    }
+    else
+    {
+        error();
+    }
+    lectura.close();
+    pausa();
+}

@@ -80,7 +80,7 @@ void Suministros::agregar_produ(){
         getline(cin,marca);
         cout<<"\n\n";
         fflush(stdin);
-        cout<<"Ingresa el precio del Suministro: ";
+        cout<<"Ingresa el precio unitario del Suministro: ";
         getline(cin,precio);
         cout<<"\n\n";
         fflush(stdin);
@@ -119,10 +119,10 @@ void Suministros::ver_sumi(){
             getline(lectura,marca);
 			getline(lectura,precio);;
             getline(lectura,cantidad);
-            cout<<"Id: "<<id<<endl;
-            cout<<"Nombre: "<<tipo<<endl;
-			cout<<"Marca: "<<marca<<endl;
-			cout<<"Precio: S/"<<precio<<endl;
+            cout<<"Id: "<<id<<"\t";
+            cout<<"Nombre: "<<tipo<<"\t";
+			cout<<"Marca: "<<marca<<"\t";
+			cout<<"Precio: S/"<<precio<<"\t";
             cout<<"Cantidad: "<<cantidad<<endl;
             cout<<"\n\n";
             getline(lectura,id);
