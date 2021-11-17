@@ -193,10 +193,10 @@ void Registrar::mostrar_registro(){
         while(!lectura.eof())
         {
             i++;
-            getline(lectura,tipo);;
-            getline(lectura,marca);
-			getline(lectura,precio);;
-            getline(lectura,cantidad);
+            getline(lectura,usuario);;
+            getline(lectura,direccion);
+			getline(lectura,telefono);;
+            getline(lectura,dni);
             cout<<"Contrasena: "<<contrasena<<"\t";
             cout<<"Nombre: "<<usuario<<"\t";
 			cout<<"Direccion: "<<direccion<<"\t";
