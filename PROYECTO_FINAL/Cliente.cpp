@@ -13,3 +13,8 @@ void Cliente::Eliminar_registro(){
     system("cls");
     log.eliminar();
 }
+
+void Cliente::Mostrar_registro(){
+    system("cls");
+    log.mostrar();
+}

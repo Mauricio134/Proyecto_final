@@ -9,7 +9,7 @@ Registrar::Registrar(){
     direccion = "";
 }
 
-void Registrar::registrarse_cli(){
+bool Registrar::registrarse_cli(){
     ofstream escritura;
     ifstream verificador;
     string auxCodigo;
@@ -87,19 +87,21 @@ void Registrar::registrarse_cli(){
         escritura << contrasena <<"\n"<< usuario <<"\n"<< direccion <<"\n"<< telefono <<"\n"<< dni << endl;
 
         cout<<"El registro se ha completado correctamente." << endl;
+
+        return false;
     }
 
     else
     {
-        error();
+        return true;
     }
 
     escritura.close();
     verificador.close();
-	pausa();
+	system("pause");
 }
 
-void Registrar::registrarse_admin(){
+bool Registrar::registrarse_admin(){
     ofstream escritura;
     ifstream verificador;
     string auxCodigo;
@@ -169,16 +171,17 @@ void Registrar::registrarse_admin(){
         escritura << contrasena <<"\n"<< usuario <<"\n"<< id << endl;
 
         cout<<"El registro se ha completado correctamente." << endl;
+        return false;
     }
 
     else
     {
-        error();
+        return true;
     }
 
     escritura.close();
     verificador.close();
-	pausa();
+	system("pause");
 }
 
 void Registrar::mostrar_registro(){

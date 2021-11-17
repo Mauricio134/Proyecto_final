@@ -8,7 +8,7 @@ Suministros::Suministros(){
     cantidad = "";
 }
 
-void Suministros::agregar_produ(){
+bool Suministros::agregar_produ(){
 	ofstream escritura;
     ifstream verificador;
     string auxCodigo;
@@ -91,19 +91,21 @@ void Suministros::agregar_produ(){
         escritura <<id<<"\n"<<tipo<<"\n"<<marca<<"\n"<<precio<<"\n"<<cantidad<<"\n";
 
         cout<<"El registro se ha completado correctamente." << endl;
+        escritura.close();
+        verificador.close();
+        system("pause");
+        return false;
     }
 
     else
     {
-        error();
+        escritura.close();
+        verificador.close();
+        return true;
     }
-
-    escritura.close();
-    verificador.close();
-	pausa();
 }
 
-void Suministros::ver_sumi(){
+bool Suministros::ver_sumi(){
 	system("cls");
 	int i=0;
     ifstream lectura;
@@ -134,13 +136,54 @@ void Suministros::ver_sumi(){
         else{
             cout<<"Hay un total de "<< i <<" suministros registrados en este almacen\n\n";
         }
+        lectura.close();
+        system("pause");
+        return false;
     }
     else
     {
-        error();
+        lectura.close();
+        return true;
     }
-    lectura.close();
-    pausa();
+}
+
+void Suministros::mod_sumi(){
+	system ("cls");
+	string idaux;
+	string cantidadaux;
+	ifstream lec("suministros.txt",ios::in);
+	ofstream aux("auxiliar.txt", ios::out|ios::app);
+	if (lec.is_open()){
+		cout << "Ingrese el id del suministro que desea modificar" << endl;
+		cin >> idaux;
+		lec >> id;
+		lec.seekg(0);
+		getline(lec,id);
+		while (!lec.eof()){
+			getline(lec,tipo);
+			getline(lec,marca);
+			getline(lec,precio);
+            getline(lec,cantidad);
+
+			if (id == idaux){
+				cout << "digite la nueva cantidad" <<endl;
+				cin >> cantidadaux;
+				aux<<id<<"\n"<<tipo<<"\n"<<marca<<"\n"<<precio<<"\n"<<cantidadaux<<"\n";
+			}
+			else{
+				aux<<id<<"\n"<<tipo<<"\n"<<marca<<"\n"<<precio<<"\n"<<cantidad<<"\n";
+			}
+			getline(lec,id);
+		}
+		lec.close();
+		aux.close();
+	}
+	else{
+		cout << "Error" << endl;
+	}
+	remove("suministros.txt");
+	rename("auxiliar.txt", "suministros.txt");
+	system("pause");
 }
 
 void Suministros::mod_sumi(){

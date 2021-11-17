@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <conio.h>
 
+using namespace std;
 
 int menu();
 int menu_admin();

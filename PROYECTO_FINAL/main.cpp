@@ -42,10 +42,14 @@ int main(){
 					Registrar inicio;
                     switch(cliente_o_admin){
 						case 1:
-							inicio.registrarse_admin();
+							if(inicio.registrarse_admin() == true){
+                                error();
+							}
 							break;
 						case 2:
-							inicio.registrarse_cli();
+							if (inicio.registrarse_cli() == true){
+                                error();
+							}
 							break;
 					}
                 }while(cliente_o_admin != 3);

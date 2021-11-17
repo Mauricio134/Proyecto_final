@@ -1,3 +1,4 @@
+#include "Funcion.h"
 #include "Login.h"
 #include "Cliente.h"
 #include "Suministros.h"
@@ -68,19 +69,23 @@ void Loguear::loguearse_admin(){
 				Registrar registro;
                 op = menu_admin();
                 switch(op){
-                    case 1:registro.mostrar_registro();
-                        break;
+                    case 1:
+                        cliente.Mostrar_registro();
                     case 2:
                         cliente.Eliminar_registro();
                         break;
                     case 3:
-                        suministros.agregar_produ();
+                        if(suministros.agregar_produ() == true){
+                            error();
+                        }
                         break;
                     case 4:
-						suministros.mod_sumi();
+                        suministros.mod_sumi();
                         break;
                     case 5:
-                        suministros.ver_sumi();
+                        if (suministros.ver_sumi() == true){
+                            error();
+                        }
                         break;
                     case 6:
                         break;
@@ -131,4 +136,42 @@ void Loguear::eliminar(){
 
     remove("clientes.txt");
     rename("Auxiliar.txt", "clientes.txt");
+}
+
+void Loguear::mostrar(){
+    system("cls");
+	int i=0;
+    ifstream lectura;
+    lectura.open("clientes.txt",ios::in);
+    if(lectura.is_open())
+    {
+        cout<<"\t\t\t\t***Listado de todos los Usuarios (Clientes)***\t\t\t\t\n\n";
+        getline(lectura,contrasena);
+        while(!lectura.eof())
+        {
+            i++;
+            getline(lectura,usuario);
+            getline(lectura,direccion);
+			getline(lectura,telefono);
+            getline(lectura,dni);
+            cout<<"Nombre: "<<usuario<<endl;
+			cout<<"Direccion: "<<direccion<<endl;
+			cout<<"Telefono: "<<telefono<<endl;
+            cout << "--------------------------" << endl;
+            getline(lectura,contrasena);
+        }
+
+        if(i==1){
+            cout<<"Hay un solo usuario(cliente) registrado \n\n";
+        }
+        else{
+            cout<<"Hay un total de "<< i <<" Usuarios(clientes) registrados \n\n";
+        }
+    }
+    else
+    {
+        cout << "No hay registros!!!" << endl;
+    }
+    lectura.close();
+    system("pause");
 }
