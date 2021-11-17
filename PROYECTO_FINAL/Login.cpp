@@ -65,7 +65,7 @@ void Loguear::loguearse_admin(){
             do{
                 Cliente cliente;
                 Suministros suministros;
-				Registar registro;
+				Registrar registro;
                 op = menu_admin();
                 switch(op){
                     case 1:registro.mostrar_registro();
