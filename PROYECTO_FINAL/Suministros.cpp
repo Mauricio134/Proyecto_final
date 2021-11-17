@@ -80,7 +80,7 @@ void Suministros::agregar_produ(){
         getline(cin,marca);
         cout<<"\n\n";
         fflush(stdin);
-        cout<<"Ingresa el precio del Suministro: ";
+        cout<<"Ingresa el precio unitario del Suministro: ";
         getline(cin,precio);
         cout<<"\n\n";
         fflush(stdin);
@@ -119,10 +119,10 @@ void Suministros::ver_sumi(){
             getline(lectura,marca);
 			getline(lectura,precio);;
             getline(lectura,cantidad);
-            cout<<"Id: "<<id<<endl;
-            cout<<"Nombre: "<<tipo<<endl;
-			cout<<"Marca: "<<marca<<endl;
-			cout<<"Precio: S/"<<precio<<endl;
+            cout<<"Id: "<<id<<"\t";
+            cout<<"Nombre: "<<tipo<<"\t";
+			cout<<"Marca: "<<marca<<"\t";
+			cout<<"Precio: S/"<<precio<<"\t";
             cout<<"Cantidad: "<<cantidad<<endl;
             cout<<"\n\n";
             getline(lectura,id);
@@ -141,4 +141,43 @@ void Suministros::ver_sumi(){
     }
     lectura.close();
     pausa();
+}
+
+void Suministros::mod_sumi(){
+	system ("cls");
+	string idaux;
+	string cantidadaux
+	ifstream lec;
+	lec.open("suministros.txt",ios::in);
+	ofstream aux("auxiliar.txt",ios::out);
+	if (lec.is_open()){
+		cout << "Ingrese el id del suministro que desea modificar" << endl;
+		cin >> idaux;
+		lec >> id;
+		lec.seekg(0);
+		getline(lec,id);
+		while (!lec.eof()){
+			getline(lec,tipo);
+			getline(lec,marca);
+			getline(lec,precio);
+            getline(lec,cantidad);
+			
+			if (id== idaux){
+				cout << "digite la nueva cantidad" <<endl;
+				cin >> cantidadaux;
+				aux<<id<<"\n"<<tipo<<"\n"<<marca<<"\n"<<precio<<"\n"<<cantidadaux<<"\n";
+			}
+			else{
+				aux<<id<<"\n"<<tipo<<"\n"<<marca<<"\n"<<precio<<"\n"<<cantidad<<"\n";
+			}
+			getline(lec,id);	
+		}
+		lec.close;
+		aux.close;
+	}
+	else{
+		error();
+	}
+	remove ("suministros.txt");
+	rename ("auxiliar.txt", "suministros.txt")
 }

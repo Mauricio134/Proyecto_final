@@ -1,5 +1,5 @@
 #include "Funcion.h"
-#pragma once
+
 
 class Suministros{
     public:
@@ -13,4 +13,5 @@ class Suministros{
 
         void agregar_produ();
 		void ver_sumi();
+		void mod_sumi();
 };

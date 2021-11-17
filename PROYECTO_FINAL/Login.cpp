@@ -65,9 +65,10 @@ void Loguear::loguearse_admin(){
             do{
                 Cliente cliente;
                 Suministros suministros;
+				Registrar registro;
                 op = menu_admin();
                 switch(op){
-                    case 1:
+                    case 1:registro.mostrar_registro();
                         break;
                     case 2:
                         cliente.Eliminar_registro();
@@ -76,6 +77,7 @@ void Loguear::loguearse_admin(){
                         suministros.agregar_produ();
                         break;
                     case 4:
+						suministros.mod_sumi();
                         break;
                     case 5:
                         suministros.ver_sumi();

@@ -14,4 +14,5 @@ class Registrar{
 
 		void registrarse_cli();
 		void registrarse_admin();
+		void mostrar_registro();
 };
