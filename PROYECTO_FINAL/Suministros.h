@@ -13,4 +13,5 @@ class Suministros{
 
         void agregar_produ();
 		void ver_sumi();
+		void mod_sumi();
 };

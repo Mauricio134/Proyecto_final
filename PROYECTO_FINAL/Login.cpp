@@ -77,6 +77,7 @@ void Loguear::loguearse_admin(){
                         suministros.agregar_produ();
                         break;
                     case 4:
+						suministros.mod_sumi();
                         break;
                     case 5:
                         suministros.ver_sumi();
