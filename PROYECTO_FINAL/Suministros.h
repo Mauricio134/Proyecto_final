@@ -1,5 +1,8 @@
-#include "Funcion.h"
 #pragma once
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 class Suministros{
     public:
@@ -11,6 +14,7 @@ class Suministros{
 
         Suministros();
 
-        void agregar_produ();
-		void ver_sumi();
+        bool agregar_produ();
+		bool ver_sumi();
+		void mod_sumi();
 };

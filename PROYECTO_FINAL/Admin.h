@@ -1,6 +1,6 @@
+#pragma once
 #include "Login.h"
 #include "Register.h"
-#pragma once
 
 class Administrador{
     public:

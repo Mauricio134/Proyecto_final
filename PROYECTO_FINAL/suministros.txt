@@ -2,9 +2,14 @@
 Leche
 Gloria
 12
-12 kilos
+12
 002
 Huevos
 La calera
 0.50
 13
+003
+Carne
+La paella
+40
+10

@@ -1,5 +1,8 @@
-#include "Funcion.h"
 #pragma once
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 class Registrar{
     public:
@@ -12,6 +15,6 @@ class Registrar{
 
         Registrar();
 
-		void registrarse_cli();
-		void registrarse_admin();
+		bool registrarse_cli();
+		bool registrarse_admin();
 };

@@ -1,5 +1,8 @@
-#include "Funcion.h"
 #pragma once
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 class Loguear{
     public:
@@ -19,4 +22,5 @@ class Loguear{
         void loguearse_cli();
 		void loguearse_admin();
 		void eliminar();
+		void mostrar();
 };
