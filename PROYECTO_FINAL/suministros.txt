@@ -2,7 +2,7 @@
 Leche
 Gloria
 12
-12
+1
 002
 Huevos
 La calera
@@ -12,4 +12,9 @@ La calera
 Carne
 La paella
 40
+10
+004
+atun
+1111
+12
 10

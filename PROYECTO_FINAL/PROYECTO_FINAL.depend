@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1637183661 source:c:\users\usuario\git\proyecto_final\proyecto_final\main.cpp
+1637189493 source:c:\users\usuario\git\proyecto_final\proyecto_final\main.cpp
 	"Funcion.h"
 	"Usuario.h"
 	"Register.h"
@@ -8,40 +8,40 @@
 	"Cliente.h"
 	"Suministros.h"
 
-1637187992 source:c:\users\usuario\git\proyecto_final\proyecto_final\login.cpp
+1637189937 source:c:\users\usuario\git\proyecto_final\proyecto_final\login.cpp
 	"Funcion.h"
 	"Login.h"
 	"Cliente.h"
 	"Suministros.h"
 
-1637166195 c:\users\usuario\git\proyecto_final\proyecto_final\funcion.h
+1637189899 c:\users\usuario\git\proyecto_final\proyecto_final\funcion.h
 	<iostream>
 	<fstream>
 	<stdlib.h>
 	<conio.h>
 
-1637185097 c:\users\usuario\git\proyecto_final\proyecto_final\login.h
+1637189493 c:\users\usuario\git\proyecto_final\proyecto_final\login.h
 	<iostream>
 	<fstream>
 
-1637183566 source:c:\users\usuario\git\proyecto_final\proyecto_final\register.cpp
+1637190307 source:c:\users\usuario\git\proyecto_final\proyecto_final\register.cpp
 	"Register.h"
 
-1637183677 c:\users\usuario\git\proyecto_final\proyecto_final\register.h
+1637190078 c:\users\usuario\git\proyecto_final\proyecto_final\register.h
 	<iostream>
 	<fstream>
 
-1637184875 source:c:\users\usuario\git\proyecto_final\proyecto_final\cliente.cpp
+1637189493 source:c:\users\usuario\git\proyecto_final\proyecto_final\cliente.cpp
 	"Cliente.h"
 
-1637184854 c:\users\usuario\git\proyecto_final\proyecto_final\cliente.h
+1637189493 c:\users\usuario\git\proyecto_final\proyecto_final\cliente.h
 	"Login.h"
 	"Register.h"
 
 1636910405 source:c:\users\usuario\git\proyecto_final\proyecto_final\admin.cpp
 	"Admin.h"
 
-1637183791 c:\users\usuario\git\proyecto_final\proyecto_final\admin.h
+1637189493 c:\users\usuario\git\proyecto_final\proyecto_final\admin.h
 	"Login.h"
 	"Register.h"
 
@@ -52,13 +52,13 @@
 	"Admin.h"
 	"Cliente.h"
 
-1637183774 source:c:\users\usuario\git\proyecto_final\proyecto_final\funcion.cpp
+1637189493 source:c:\users\usuario\git\proyecto_final\proyecto_final\funcion.cpp
 	"Funcion.h"
 
-1637188968 c:\users\usuario\git\proyecto_final\proyecto_final\suministros.h
+1637189944 c:\users\usuario\git\proyecto_final\proyecto_final\suministros.h
 	<iostream>
 	<fstream>
 
-1637188400 source:c:\users\usuario\git\proyecto_final\proyecto_final\suministros.cpp
+1637190427 source:c:\users\usuario\git\proyecto_final\proyecto_final\suministros.cpp
 	"Suministros.h"
 

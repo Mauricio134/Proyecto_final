@@ -218,8 +218,8 @@ void Registrar::mostrar_registro(){
     }
     else
     {
-        error();
+        cout << "No hay registros!!!" << endl;
     }
     lectura.close();
-    pausa();
+    system("pause");
 }
