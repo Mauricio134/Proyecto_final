@@ -14,6 +14,7 @@ class Registrar{
         string direccion; //cliente
 
         Registrar();
+
         bool registrarse_cli();
         bool registrarse_admin();
         void mostrar_registro();
