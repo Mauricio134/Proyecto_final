@@ -5,6 +5,7 @@
 #include "Admin.h"
 #include "Cliente.h"
 #include "Suministros.h"
+#include "Pedidos.h"
 
 int main(){
 	system ("color f0");

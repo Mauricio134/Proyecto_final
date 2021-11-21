@@ -35,6 +35,7 @@ void Loguear::loguearse_cli(){
                 op = menu_cli();
                 switch(op){
                     case 1:
+                        pedido.registrar_pedido(dni);
                         break;
                 }
             }while(op != 2);
@@ -158,6 +159,7 @@ void Loguear::mostrar(){
             cout<<"Nombre: "<<usuario<<endl;
 			cout<<"Direccion: "<<direccion<<endl;
 			cout<<"Telefono: "<<telefono<<endl;
+			cout<<"DNI: "<<dni<<endl;
             cout << "--------------------------" << endl;
             getline(lectura,contrasena);
         }

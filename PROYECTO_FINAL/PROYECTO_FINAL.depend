@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1637257168 source:c:\users\usuario\git\proyecto_final\proyecto_final\main.cpp
+1637510648 source:c:\users\usuario\git\proyecto_final\proyecto_final\main.cpp
 	"Funcion.h"
 	"Usuario.h"
 	"Register.h"
@@ -7,8 +7,9 @@
 	"Admin.h"
 	"Cliente.h"
 	"Suministros.h"
+	"Pedidos.h"
 
-1637190603 source:c:\users\usuario\git\proyecto_final\proyecto_final\login.cpp
+1637509995 source:c:\users\usuario\git\proyecto_final\proyecto_final\login.cpp
 	"Funcion.h"
 	"Login.h"
 	"Cliente.h"
@@ -20,9 +21,10 @@
 	<stdlib.h>
 	<conio.h>
 
-1637257293 c:\users\usuario\git\proyecto_final\proyecto_final\login.h
+1637510858 c:\users\usuario\git\proyecto_final\proyecto_final\login.h
 	<iostream>
 	<fstream>
+	"Pedidos.h"
 
 1637190603 source:c:\users\usuario\git\proyecto_final\proyecto_final\register.cpp
 	"Register.h"
@@ -31,10 +33,10 @@
 	<iostream>
 	<fstream>
 
-1637189493 source:c:\users\usuario\git\proyecto_final\proyecto_final\cliente.cpp
+1637257480 source:c:\users\usuario\git\proyecto_final\proyecto_final\cliente.cpp
 	"Cliente.h"
 
-1637257328 c:\users\usuario\git\proyecto_final\proyecto_final\cliente.h
+1637257562 c:\users\usuario\git\proyecto_final\proyecto_final\cliente.h
 	"Login.h"
 	"Register.h"
 
@@ -45,7 +47,7 @@
 	"Login.h"
 	"Register.h"
 
-1637257275 source:c:\users\usuario\git\proyecto_final\proyecto_final\usuario.cpp
+1637257375 source:c:\users\usuario\git\proyecto_final\proyecto_final\usuario.cpp
 	"Usuario.h"
 
 1637257368 c:\users\usuario\git\proyecto_final\proyecto_final\usuario.h
@@ -61,4 +63,11 @@
 
 1637190603 source:c:\users\usuario\git\proyecto_final\proyecto_final\suministros.cpp
 	"Suministros.h"
+
+1637519844 c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.h
+	<iostream>
+	<fstream>
+
+1637519897 source:c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.cpp
+	"Pedidos.h"
 

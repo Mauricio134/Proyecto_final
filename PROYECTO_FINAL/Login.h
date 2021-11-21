@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <fstream>
+#include "Pedidos.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ class Loguear{
         string contraux;
         string dniaux;
         bool encontrado;
+        Pedidos pedido;
 
         Login();
 
