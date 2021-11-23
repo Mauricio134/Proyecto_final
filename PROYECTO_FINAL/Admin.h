@@ -4,8 +4,7 @@
 
 class Administrador{
     public:
-        Registrar reg;
-        Loguear log;
+        Usuario log;
 
         Administrador();
 
