@@ -2,9 +2,8 @@
 #include "Login.h"
 #include "Register.h"
 
-class Administrador{
+class Administrador : public Usuario{
     public:
-        Registrar reg;
         Loguear log;
 
         Administrador();
