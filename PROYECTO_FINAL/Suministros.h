@@ -12,6 +12,7 @@ class Suministros{
         string precio;
         string cantidad;
 		string **reg;
+		int tamano;
 
 
         Suministros();

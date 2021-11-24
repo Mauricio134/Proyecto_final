@@ -6,6 +6,8 @@ Suministros::Suministros(){
     marca = "";
     precio = "";
     cantidad = "";
+	reg = nullptr;
+	tamano=0;
 }
 
 bool Suministros::agregar_produ(){
@@ -108,14 +110,13 @@ bool Suministros::agregar_produ(){
 bool Suministros::ver_sumi(){
 	system("cls");
     int n = 0;
-	int tamano = cont_sumi();
+	tamano = cont_sumi();
 	
 	reg=new string*[tamano];              
     for(int i=0;i<tamano;i++){
         reg[i]=new string[5];
     }
-	//string reg [tamano][5];
-    
+   
 	ifstream lectura;
     lectura.open("suministros.txt", ios::in);
     if (lectura.is_open())
@@ -133,24 +134,14 @@ bool Suministros::ver_sumi(){
             
 			
 			reg [n][0] = id;
-			
 			reg [n][1] = tipo;
-		
 			reg [n][2] = marca;
-			
 			reg [n][3] = precio;
-			
 			reg [n][4] = cantidad;
-			/*
-			cout << "Id: " << id << endl;
-            cout << "Nombre: " << tipo << endl;
-            cout << "Marca: " << marca << endl;
-            cout << "Precio: S/" << precio << endl;
-            cout << "Cantidad: " << cantidad << endl;
-            cout << "--------------------------" << endl;*/
+			
             getline(lectura, id);
 			n++;
-			delete []reg;
+		
         }
 		
 		for (int x = 0; x < tamano; x++){
@@ -182,6 +173,12 @@ bool Suministros::ver_sumi(){
             cout << "Hay un total de " << tamano << " suministros registrados en este almacen\n\n";
         }
         lectura.close();
+		for (int o = 0; o < tamano; o++) {
+			delete [] reg[o];
+			}
+		delete [] reg;
+		reg = nullptr;
+		
         system("pause");
         return false;
     }
