@@ -4,7 +4,7 @@ Cliente::Cliente(){
     dni = " ";
 }
 
-void Cliente::registrarse_cli(){
+bool Cliente::registrarse_cli(){
     ofstream escritura;
     ifstream verificador;
     string auxCodigo;
@@ -96,6 +96,7 @@ void Cliente::registrarse_cli(){
 }
 
 void Cliente::loguearse_cli(){
+    system("cls");
     cout << "<----- LogIn ----->" << endl;
     cout << "Usuario: ";
     cin >> usuaux;
@@ -156,13 +157,13 @@ void Cliente::Eliminar_registro(){
         }
         Lectura.close();
         aux.close();
-        system("pause");
     }else{
         cout << "Error" << endl;
     }
 
     remove("clientes.txt");
     rename("Auxiliar.txt", "clientes.txt");
+    system("pause");
 }
 
 void Cliente::Mostrar_registro(){
@@ -184,6 +185,7 @@ void Cliente::Mostrar_registro(){
             cout<<"Nombre: "<<usuario<<endl;
 			cout<<"Direccion: "<<direccion<<endl;
 			cout<<"Telefono: "<<telefono<<endl;
+			cout<<"DNI: "<<dni<<endl;
             cout << "--------------------------" << endl;
             getline(lectura,contrasena);
         }
@@ -200,4 +202,16 @@ void Cliente::Mostrar_registro(){
         cout << "No hay registros!!!" << endl;
     }
     lectura.close();
+    system("pause");
+}
+
+int Cliente::menu_cli(){
+    int num;
+    system("cls");
+    cout << "<<-------Bienvenido "<< usuario << "------->>" << endl;
+    cout << "1. Realizar Pedido" << endl;
+    cout << "2. Salir" << endl;
+    cout << "Opcion: ";
+    cin >> num;
+    return num;
 }

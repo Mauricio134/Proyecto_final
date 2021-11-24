@@ -12,8 +12,10 @@ class Cliente : public Usuario{
         string dni;
 
         Cliente();
-        void registrarse_cli();
+
+        bool registrarse_cli();
         void loguearse_cli();
         void Eliminar_registro();
         void Mostrar_registro();
+        int menu_cli();
 };

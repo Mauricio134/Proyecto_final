@@ -22,10 +22,10 @@ int main(){
                     op2 = user1.menu_usu();
                     switch(op2){
                         case 1:
-							admin.Login();
+							admin.loguearse_admin();
                             break;
                         case 2:
-                            cli.Login();
+                            cli.loguearse_cli();
                             break;
                     }
                 }while(op2 != 3);
@@ -34,21 +34,22 @@ int main(){
                 system("cls");
                 int cliente_o_admin;
                 do{
+                    Administrador admin;
+                    Cliente cli;
                     cout << "<<-------Tipo de Usuario------->>" << endl;
                     cout << "1. Administrador" << endl;
                     cout << "2. Cliente" << endl;
                     cout << "3. Retornar al Menu"<< endl;
                     cout<<"Opcion: ";
                     cin>> cliente_o_admin;
-					Registrar inicio;
                     switch(cliente_o_admin){
 						case 1:
-							if(inicio.registrarse_admin() == true){
+							if(admin.registrarse_admin() == true){
                                 error();
 							}
 							break;
 						case 2:
-							if (inicio.registrarse_cli() == true){
+							if (cli.registrarse_cli() == true){
                                 error();
 							}
 							break;

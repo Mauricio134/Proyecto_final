@@ -4,7 +4,7 @@ Administrador::Administrador(){
     id = " ";
 }
 
-void Administrador::registrarse_admin()
+bool Administrador::registrarse_admin()
 {
     ofstream escritura;
     ifstream verificador;
@@ -89,6 +89,7 @@ void Administrador::registrarse_admin()
 }
 
 void Administrador::loguearse_admin(){
+    system("cls");
     ifstream Admin_lec("Admin.txt", ios::in);
     cout << "<----- LogIn ----->" << endl;
     cout << "Usuario: ";
@@ -102,16 +103,17 @@ void Administrador::loguearse_admin(){
         if (usuario == usuaux && contrasena == contraux){
             int op;
             do{
-                Cliente cliente;
+                Cliente cli;
                 Suministros suministros;
 				Pedidos pedidos;
+
                 op = menu_admin();
                 switch(op){
                     case 1:
-                        cliente.Mostrar_registro();
+                        cli.Mostrar_registro();
                         break;
                     case 2:
-                        cliente.Eliminar_registro();
+                        cli.Eliminar_registro();
                         break;
                     case 3:
                         if(suministros.agregar_produ() == true){
@@ -129,10 +131,9 @@ void Administrador::loguearse_admin(){
 						suministros.ver_sumi();
                         break;
                     case 6:
-						pedidos.mostrar();
+						pedidos.mostrar_pedidos();
                         break;
                     case 7:
-						pedidos.eliminar();
                         break;
                 }
             }while(op != 8);
@@ -146,4 +147,21 @@ void Administrador::loguearse_admin(){
     }
     Admin_lec.close();
     system("pause");
+}
+
+int Administrador::menu_admin(){
+    int num;
+    system("cls");
+    cout << "<<-------Bienvenido "<< usuario << "------->>" << endl;
+    cout << "1. Mostrar Usuarios" << endl;
+    cout << "2. Eliminar Usuarios" << endl;
+    cout << "3. Registrar Suministros" << endl;
+    cout << "4. Modificar Suministros" << endl;
+    cout << "5. Mostrar Suministros" << endl;
+    cout << "6. Lista de Pedidos" << endl;
+    cout << "7. Eliminar Pedidos" << endl;
+    cout << "8. Salir" << endl;
+    cout << "Opcion: ";
+    cin >> num;
+    return num;
 }
