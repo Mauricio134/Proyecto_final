@@ -6,6 +6,7 @@ Pedidos::Pedidos(){
     dni = " ";
     telefono = " ";
     direccion = " ";
+    tipo = " ";
     cantidad = 0;
     dia = " ";
     mes = " ";
@@ -19,7 +20,7 @@ Pedidos::Pedidos(){
     sum = 0;
 }
 
-void Pedidos::mostrar(){
+void Pedidos::mostrar_pedidos(){
     system("cls");
 	int i=0;
     ifstream lectura;
@@ -27,30 +28,41 @@ void Pedidos::mostrar(){
     if(lectura.is_open())
     {
         cout<<"\t\t\t\t***Listado de todos los Pedidos***\t\t\t\t\n\n";
-        getline(lectura,dni);
+        lectura >> usuario;
         while(!lectura.eof())
         {
             i++;
-            getline(lectura,usuario);
+            lectura.ignore(10000, '\n');
             getline(lectura,direccion);
-			getline(lectura,telefono);
-			getline(lectura,dia);
-			getline(lectura,mes);
-			getline(lectura,ano);
-			getline(lectura,tipo);
-            getline(lectura,dni);
-            cout<<"DNI: "<<usuario<<endl;
-			cout<<"Direccion: "<<direccion<<endl;
-			cout<<"Telefono: "<<telefono<<endl;
-			cout<<"Dia: "<<dia<<endl;
-			cout<<"Mes: "<<mes<<endl;
-			cout<<"Ano: "<<ano<<endl;
-			cout<<"Tipo de pedido: "<<tipo<<endl;
-			cout<<"Tipo de pedido: "<<fresa<<endl;
-			cout<<"Tipo de pedido: "<<coco<<endl;
-			cout<<"Tipo de pedido: "<<circulo<<endl;
+            lectura >> telefono;
+			lectura >> dia;
+			lectura >> mes;
+			lectura >> ano;
+			lectura >> cantidad;
+			lectura >> fresa;
+            lectura >> coco;
+            lectura >> circulo;
+            lectura >> precio;
+            lectura >> tipo;
+            cout << "<------Pedidos------>" << endl;
+            cout << "Usuario: " << usuario << endl;
+            cout << "Direccion: " << direccion << endl;
+            cout << "Telefono: " << telefono << endl;
+            cout << "Fecha de Realizacion del Pedido: " << dia << "/" << mes << "/" << ano << endl;
+            cout << "Pedido: ";
+            if (tipo == "Caja"){
+                cout << cantidad << " cajas." << endl;
+                cout << "<------Contenido de la caja------>" << endl;
+                cout << "Pasteles de Fresa: " << fresa << " pasteles" << endl;
+                cout << "Pasteles de Coco: " << coco << " pasteles" << endl;
+                cout << "Pasteles Circulares: " << circulo << " pasteles" << endl;
+            }
+            else if(tipo == "Pasteles"){
+                cout << cantidad << " pasteles." << endl;
+            }
+            cout << "Costo: " << "s/." << precio << endl;
             cout << "--------------------------" << endl;
-            getline(lectura,dni);
+            lectura >> usuario;
         }
 
         if(i==1){

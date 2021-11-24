@@ -24,7 +24,7 @@ class Pedidos{
 
         Pedidos();
 
-        void mostrar();
+        void mostrar_pedidos();
         void registrar_pedido(string );
         void pasteles_opciones();
         int Caja_o_personal();

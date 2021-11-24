@@ -38,12 +38,8 @@
 		<Unit filename="Cliente.h" />
 		<Unit filename="Funcion.cpp" />
 		<Unit filename="Funcion.h" />
-		<Unit filename="Login.cpp" />
-		<Unit filename="Login.h" />
 		<Unit filename="Pedidos.cpp" />
 		<Unit filename="Pedidos.h" />
-		<Unit filename="Register.cpp" />
-		<Unit filename="Register.h" />
 		<Unit filename="Suministros.cpp" />
 		<Unit filename="Suministros.h" />
 		<Unit filename="Usuario.cpp" />
