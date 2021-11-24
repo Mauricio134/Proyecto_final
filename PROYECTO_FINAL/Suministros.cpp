@@ -107,34 +107,79 @@ bool Suministros::agregar_produ(){
 
 bool Suministros::ver_sumi(){
 	system("cls");
-	int i=0;
-    ifstream lectura;
-    lectura.open("suministros.txt",ios::in);
-    if(lectura.is_open())
+    int n = 0;
+	int tamano = cont_sumi();
+	
+	reg=new string*[tamano];              
+    for(int i=0;i<tamano;i++){
+        reg[i]=new string[5];
+    }
+	//string reg [tamano][5];
+    
+	ifstream lectura;
+    lectura.open("suministros.txt", ios::in);
+    if (lectura.is_open())
     {
-        cout<<"\t\t\t\t***Listado de todos los suministros***\t\t\t\t\n\n";
-        getline(lectura,id);
-        while(!lectura.eof())
+		lectura.seekg(0);
+        cout << "\t\t\t\t***Listado de todos los suministros***\t\t\t\t\n\n";
+        getline(lectura, id);
+        while (!lectura.eof())
         {
-            i++;
-            getline(lectura,tipo);;
-            getline(lectura,marca);
-			getline(lectura,precio);;
-            getline(lectura,cantidad);
-            cout<<"Id: "<<id<<endl;
-            cout<<"Nombre: "<<tipo<<endl;
-			cout<<"Marca: "<<marca<<endl;
-			cout<<"Precio: S/"<<precio<<endl;
-            cout<<"Cantidad: "<<cantidad<<endl;
-            cout<<"--------------------------" <<endl;
-            getline(lectura,id);
+            
+            getline(lectura, tipo);;
+            getline(lectura, marca);
+            getline(lectura, precio);;
+            getline(lectura, cantidad);
+            
+			
+			reg [n][0] = id;
+			
+			reg [n][1] = tipo;
+		
+			reg [n][2] = marca;
+			
+			reg [n][3] = precio;
+			
+			reg [n][4] = cantidad;
+			/*
+			cout << "Id: " << id << endl;
+            cout << "Nombre: " << tipo << endl;
+            cout << "Marca: " << marca << endl;
+            cout << "Precio: S/" << precio << endl;
+            cout << "Cantidad: " << cantidad << endl;
+            cout << "--------------------------" << endl;*/
+            getline(lectura, id);
+			n++;
+			delete []reg;
         }
-
-        if(i==1){
-            cout<<"Hay un solo suministro registrado en este almacen\n\n";
+		
+		for (int x = 0; x < tamano; x++){
+			for (int k = 0; k < 5; k++){
+				if (k==0){
+					cout << "Id: " <<reg [x][k] << endl;
+				}
+				if (k==1){
+					cout << "Nombre: " <<reg [x][k] << endl;
+				}
+				if (k==2){
+					cout << "Marca: " <<reg [x][k] << endl;
+				}
+				if (k==3){
+					cout << "Precio: S/" <<reg [x][k] << endl;
+				}
+				if (k==4){
+					cout << "Cantidad: " <<reg [x][k] << endl;
+				}
+				
+			}
+			cout << "--------------------------" << endl;
+		
+		}
+        if (tamano == 1) {
+            cout << "Hay un solo suministro registrado en este almacen\n\n";
         }
-        else{
-            cout<<"Hay un total de "<< i <<" suministros registrados en este almacen\n\n";
+        else {
+            cout << "Hay un total de " << tamano << " suministros registrados en este almacen\n\n";
         }
         lectura.close();
         system("pause");
@@ -145,9 +190,12 @@ bool Suministros::ver_sumi(){
         lectura.close();
         return true;
     }
+	
 }
 
 void Suministros::mod_sumi(){
+	
+	
 	system ("cls");
 	string idaux;
 	string cantidadaux;
@@ -184,4 +232,26 @@ void Suministros::mod_sumi(){
 	remove("suministros.txt");
 	rename("auxiliar.txt", "suministros.txt");
 	system("pause");
+}
+
+int Suministros::cont_sumi() {
+	system("cls");
+    int i = 0;
+    ifstream lectura;
+    lectura.open("suministros.txt", ios::in);
+    if (lectura.is_open())
+    {
+        getline(lectura, id);
+        while (!lectura.eof())
+        {
+			i++;
+			for (int k = 0; k < 5; k++){
+				getline(lectura, tipo);
+			}
+			getline(lectura, id);
+		}
+	}
+	lectura.close();
+	return i;
+	
 }
