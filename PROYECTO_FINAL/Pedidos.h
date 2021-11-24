@@ -28,9 +28,9 @@ class Pedidos{
 
         Pedidos();
 
+        void eliminar_pedido();
         void mostrar_pedidos();
         void registrar_pedido(string );
         void pasteles_opciones();
-		void eliminar_pedido();
         int Caja_o_personal();
 };

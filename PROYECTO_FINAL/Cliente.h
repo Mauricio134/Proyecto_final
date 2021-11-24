@@ -6,18 +6,14 @@
 
 using namespace std;
 
-class Cliente{
+class Cliente : public Usuario{
     public:
-<<<<<<< HEAD
-        Registrar reg;
-        Loguear log;
-=======
         Pedidos pedido;
         string dni;
 		string **regc;
->>>>>>> 2a3bc346442c75b57baac00506d4960b90b35eca
 
         Cliente();
+        ~Cliente();
 
         bool registrarse_cli();
         void loguearse_cli();

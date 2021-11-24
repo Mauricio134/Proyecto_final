@@ -15,26 +15,16 @@ int main(){
             case 1:
                 int op2;
                 do{
-                    Usuario user1;
-<<<<<<< HEAD
-                    op2 = user1.menu_usu();
-                    switch(op2){
-                        case 1:
-							user1.admin.Login();
-                            break;
-                        case 2:
-                            user1.cli.Login();
-=======
+                    Usuario usu;
                     Administrador admin;
                     Cliente cli;
-                    op2 = user1.menu_usu();
+                    op2 = usu.menu_usu();
                     switch(op2){
                         case 1:
 							admin.loguearse_admin();
                             break;
                         case 2:
                             cli.loguearse_cli();
->>>>>>> 2a3bc346442c75b57baac00506d4960b90b35eca
                             break;
                     }
                 }while(op2 != 3);
