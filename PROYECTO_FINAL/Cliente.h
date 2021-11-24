@@ -10,6 +10,7 @@ class Cliente : public Usuario{
     public:
         Pedidos pedido;
         string dni;
+		string **regc;
 
         Cliente();
 
@@ -18,4 +19,5 @@ class Cliente : public Usuario{
         void Eliminar_registro();
         void Mostrar_registro();
         int menu_cli();
+		int cont_cli();
 };

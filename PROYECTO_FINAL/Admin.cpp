@@ -134,6 +134,7 @@ void Administrador::loguearse_admin(){
 						pedidos.mostrar_pedidos();
                         break;
                     case 7:
+						pedidos.eliminar_pedido();
                         break;
                 }
             }while(op != 8);
