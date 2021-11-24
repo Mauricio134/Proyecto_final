@@ -1,7 +1,5 @@
 #include "Funcion.h"
 #include "Usuario.h"
-#include "Register.h"
-#include "Login.h"
 #include "Admin.h"
 #include "Cliente.h"
 #include "Suministros.h"
@@ -19,8 +17,8 @@ int main(){
                 int op2;
                 do{
                     Usuario user1;
-			Administrador admin;
-			Cliente cli;
+                    Administrador admin;
+                    Cliente cli;
                     op2 = user1.menu_usu();
                     switch(op2){
                         case 1:

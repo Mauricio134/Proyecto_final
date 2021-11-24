@@ -1,13 +1,16 @@
 #pragma once
-#include "Login.h"
-#include "Register.h"
+#include <iostream>
+#include <fstream>
+#include "Usuario.h"
+
+using namespace std;
 
 class Administrador : public Usuario{
     public:
-        Loguear log;
-        Usuario log;
+        string id; //admin
 
         Administrador();
 
-		void Login();
+        void registrarse_admin();
+        void loguearse_admin();
 };

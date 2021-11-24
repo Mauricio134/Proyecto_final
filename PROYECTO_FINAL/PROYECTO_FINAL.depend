@@ -36,23 +36,21 @@
 1637257480 source:c:\users\usuario\git\proyecto_final\proyecto_final\cliente.cpp
 	"Cliente.h"
 
-1637257562 c:\users\usuario\git\proyecto_final\proyecto_final\cliente.h
-	"Login.h"
-	"Register.h"
+1637715583 c:\users\usuario\git\proyecto_final\proyecto_final\cliente.h
+	"Usuario.h"
+	"Pedidos.h"
 
 1637255599 source:c:\users\usuario\git\proyecto_final\proyecto_final\admin.cpp
 	"Admin.h"
 
-1637189493 c:\users\usuario\git\proyecto_final\proyecto_final\admin.h
-	"Login.h"
-	"Register.h"
-
-1637257375 source:c:\users\usuario\git\proyecto_final\proyecto_final\usuario.cpp
+1637715505 c:\users\usuario\git\proyecto_final\proyecto_final\admin.h
 	"Usuario.h"
 
-1637257368 c:\users\usuario\git\proyecto_final\proyecto_final\usuario.h
-	"Admin.h"
-	"Cliente.h"
+1637717441 source:c:\users\usuario\git\proyecto_final\proyecto_final\usuario.cpp
+	"Usuario.h"
+
+1637718387 c:\users\usuario\git\proyecto_final\proyecto_final\usuario.h
+	<iostream>
 
 1637189493 source:c:\users\usuario\git\proyecto_final\proyecto_final\funcion.cpp
 	"Funcion.h"
@@ -64,10 +62,10 @@
 1637190603 source:c:\users\usuario\git\proyecto_final\proyecto_final\suministros.cpp
 	"Suministros.h"
 
-1637519844 c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.h
+1637713174 c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.h
 	<iostream>
 	<fstream>
 
-1637519897 source:c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.cpp
+1637713174 source:c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.cpp
 	"Pedidos.h"
 
