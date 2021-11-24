@@ -19,13 +19,15 @@ int main(){
                 int op2;
                 do{
                     Usuario user1;
+			Administrador admin;
+			Cliente cli;
                     op2 = user1.menu_usu();
                     switch(op2){
                         case 1:
-							user1.admin.Login();
+							admin.Login();
                             break;
                         case 2:
-                            user1.cli.Login();
+                            cli.Login();
                             break;
                     }
                 }while(op2 != 3);
