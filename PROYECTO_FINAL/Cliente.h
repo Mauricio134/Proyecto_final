@@ -11,6 +11,7 @@ class Cliente : public Usuario{
         Pedidos pedido;
         string dni;
 		string **regc;
+		int tamano;
 
         Cliente();
 
