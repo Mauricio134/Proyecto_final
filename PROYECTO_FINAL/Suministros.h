@@ -11,9 +11,12 @@ class Suministros{
         string marca;
         string precio;
         string cantidad;
+		string **reg;
+
 
         Suministros();
         bool agregar_produ();
         bool ver_sumi();
         void mod_sumi();
+		int cont_sumi();
 };

@@ -2,10 +2,17 @@
 
 Administrador::Administrador(){
 <<<<<<< HEAD
+<<<<<<< HEAD
     id = " ";
 }
 
 void Administrador::registrarse_admin()
+=======
+    id = " ";
+}
+
+bool Administrador::registrarse_admin()
+>>>>>>> 2a3bc346442c75b57baac00506d4960b90b35eca
 {
     ofstream escritura;
     ifstream verificador;
@@ -90,6 +97,10 @@ void Administrador::registrarse_admin()
 }
 
 void Administrador::loguearse_admin(){
+<<<<<<< HEAD
+=======
+    system("cls");
+>>>>>>> 2a3bc346442c75b57baac00506d4960b90b35eca
     ifstream Admin_lec("Admin.txt", ios::in);
     cout << "<----- LogIn ----->" << endl;
     cout << "Usuario: ";
@@ -103,6 +114,7 @@ void Administrador::loguearse_admin(){
         if (usuario == usuaux && contrasena == contraux){
             int op;
             do{
+<<<<<<< HEAD
                 Cliente cliente;
                 Suministros suministros;
 				Pedidos pedidos;
@@ -113,6 +125,19 @@ void Administrador::loguearse_admin(){
                         break;
                     case 2:
                         cliente.Eliminar_registro();
+=======
+                Cliente cli;
+                Suministros suministros;
+				Pedidos pedidos;
+
+                op = menu_admin();
+                switch(op){
+                    case 1:
+                        cli.Mostrar_registro();
+                        break;
+                    case 2:
+                        cli.Eliminar_registro();
+>>>>>>> 2a3bc346442c75b57baac00506d4960b90b35eca
                         break;
                     case 3:
                         if(suministros.agregar_produ() == true){
@@ -130,15 +155,23 @@ void Administrador::loguearse_admin(){
 						suministros.ver_sumi();
                         break;
                     case 6:
+<<<<<<< HEAD
 						pedidos.mostrar();
                         break;
                     case 7:
 						pedidos.eliminar();
+=======
+						pedidos.mostrar_pedidos();
+                        break;
+                    case 7:
+						pedidos.eliminar_pedido();
+>>>>>>> 2a3bc346442c75b57baac00506d4960b90b35eca
                         break;
                 }
             }while(op != 8);
             encontrado = true;
         }
+<<<<<<< HEAD
 
         Admin_lec >> contrasena;
     }
@@ -148,11 +181,36 @@ void Administrador::loguearse_admin(){
     Admin_lec.close();
     system("pause");
 =======
+=======
+>>>>>>> 2a3bc346442c75b57baac00506d4960b90b35eca
 
+        Admin_lec >> contrasena;
+    }
+    if (!encontrado){
+        cout << "El usuario y/o contrasena no es correcto..." << endl;
+    }
+    Admin_lec.close();
+    system("pause");
 }
 
-void Administrador::Login(){
+int Administrador::menu_admin(){
+    int num;
     system("cls");
+<<<<<<< HEAD
     log.loguearse_admin();
 >>>>>>> dev
+=======
+    cout << "<<-------Bienvenido "<< usuario << "------->>" << endl;
+    cout << "1. Mostrar Usuarios" << endl;
+    cout << "2. Eliminar Usuarios" << endl;
+    cout << "3. Registrar Suministros" << endl;
+    cout << "4. Modificar Suministros" << endl;
+    cout << "5. Mostrar Suministros" << endl;
+    cout << "6. Lista de Pedidos" << endl;
+    cout << "7. Eliminar Pedidos" << endl;
+    cout << "8. Salir" << endl;
+    cout << "Opcion: ";
+    cin >> num;
+    return num;
+>>>>>>> 2a3bc346442c75b57baac00506d4960b90b35eca
 }

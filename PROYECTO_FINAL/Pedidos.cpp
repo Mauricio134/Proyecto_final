@@ -6,10 +6,15 @@ Pedidos::Pedidos(){
     dni = " ";
     telefono = " ";
     direccion = " ";
+    tipo = " ";
     cantidad = 0;
     dia = " ";
     mes = " ";
     ano = " ";
+	auxusu = " ";
+	auxdia = " ";
+	auxmes = " ";
+	auxano = " ";
     cajas = 0;
     pasteles = 0;
     fresa = 0;
@@ -19,7 +24,7 @@ Pedidos::Pedidos(){
     sum = 0;
 }
 
-void Pedidos::mostrar(){
+void Pedidos::mostrar_pedidos(){
     system("cls");
 	int i=0;
     ifstream lectura;
@@ -27,30 +32,41 @@ void Pedidos::mostrar(){
     if(lectura.is_open())
     {
         cout<<"\t\t\t\t***Listado de todos los Pedidos***\t\t\t\t\n\n";
-        getline(lectura,dni);
+        lectura >> usuario;
         while(!lectura.eof())
         {
             i++;
-            getline(lectura,usuario);
+            lectura.ignore(10000, '\n');
             getline(lectura,direccion);
-			getline(lectura,telefono);
-			getline(lectura,dia);
-			getline(lectura,mes);
-			getline(lectura,ano);
-			getline(lectura,tipo);
-            getline(lectura,dni);
-            cout<<"DNI: "<<usuario<<endl;
-			cout<<"Direccion: "<<direccion<<endl;
-			cout<<"Telefono: "<<telefono<<endl;
-			cout<<"Dia: "<<dia<<endl;
-			cout<<"Mes: "<<mes<<endl;
-			cout<<"Ano: "<<ano<<endl;
-			cout<<"Tipo de pedido: "<<tipo<<endl;
-			cout<<"Tipo de pedido: "<<fresa<<endl;
-			cout<<"Tipo de pedido: "<<coco<<endl;
-			cout<<"Tipo de pedido: "<<circulo<<endl;
+            lectura >> telefono;
+			lectura >> dia;
+			lectura >> mes;
+			lectura >> ano;
+			lectura >> cantidad;
+			lectura >> fresa;
+            lectura >> coco;
+            lectura >> circulo;
+            lectura >> precio;
+            lectura >> tipo;
+            cout << "<------Pedidos------>" << endl;
+            cout << "Usuario: " << usuario << endl;
+            cout << "Direccion: " << direccion << endl;
+            cout << "Telefono: " << telefono << endl;
+            cout << "Fecha de Realizacion del Pedido: " << dia << "/" << mes << "/" << ano << endl;
+            cout << "Pedido: ";
+            if (tipo == "Caja"){
+                cout << cantidad << " cajas." << endl;
+                cout << "<------Contenido de la caja------>" << endl;
+                cout << "Pasteles de Fresa: " << fresa << " pasteles" << endl;
+                cout << "Pasteles de Coco: " << coco << " pasteles" << endl;
+                cout << "Pasteles Circulares: " << circulo << " pasteles" << endl;
+            }
+            else if(tipo == "Pasteles"){
+                cout << cantidad << " pasteles." << endl;
+            }
+            cout << "Costo: " << "s/." << precio << endl;
             cout << "--------------------------" << endl;
-            getline(lectura,dni);
+            lectura >> usuario;
         }
 
         if(i==1){
@@ -181,5 +197,53 @@ void Pedidos::registrar_pedido(string dniaux){
         Cli_lec>>contrasena;
     }
     Cli_lec.close();
+    system("pause");
+}
+void Pedidos::eliminar_pedido(){
+	system("cls");
+    ifstream Lect("Pedidos.txt", ios::in);
+    ofstream aux("Auxiliar.txt", ios::out);
+    if (Lect.is_open()) {
+        cout << "Colocar nombre de usuario: "<<endl;;
+        cin >> auxusu;
+		cout << " colocar el día, mes y año de pedido:"<<endl;
+		cin >> auxdia >> auxmes >> auxano;
+        Lect >> usuario;
+		Lect >> direccion;
+        while (!Lect.eof()) {
+            Lect.ignore(10000, '\n');
+			Lect >> telefono;
+            Lect >> dia;
+			Lect >> mes;
+			Lect >> ano;
+			Lect >> cantidad;
+			Lect >> fresa;
+			Lect >> coco;
+			Lect >> circulo;
+			Lect >> tipo;
+            if (usuario == auxusu && dia == auxdia && mes == auxmes && ano == auxano)  {
+                cout << "\t El pedido:" << endl;
+				cout << "Usuario: " << usuario << endl;
+				cout << "Direccion: " << direccion << endl;
+				cout << "Telefono: " << telefono << endl;
+				cout << "Fecha de Realizacion del Pedido: " << dia << "/" << mes << "/" << ano << endl;
+				cout << "Pedido: "<<tipo;
+                cout << "\t!!!! Ha sido eliminado con exito !!!!" << endl;
+            }
+            else {
+                aux << usuario << "\n" << direccion << "\n" << telefono << "\n" << dia << "\n" << mes << ano << "\n" << cantidad << "\n" << fresa << "\n" << coco << "\n" << circulo << endl;
+            }
+            Lect >> usuario;
+			Lect >> direccion;
+        }
+        Lect.close();
+        aux.close();
+    }
+    else {
+        cout << "Error" << endl;
+    }
+
+    remove("Pedidos.txt");
+    rename("Auxiliar.txt", "Pedidos.txt");
     system("pause");
 }

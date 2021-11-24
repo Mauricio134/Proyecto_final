@@ -2,6 +2,9 @@
 
 Usuario::Usuario(){
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2a3bc346442c75b57baac00506d4960b90b35eca
     usuario = " "; //cliente y admin
     contrasena = " "; //cliente y admin
     telefono = " "; //cliente
@@ -10,9 +13,12 @@ Usuario::Usuario(){
     contraux = " ";
     dniaux = " ";
     encontrado = false;
+<<<<<<< HEAD
 =======
 
 >>>>>>> dev
+=======
+>>>>>>> 2a3bc346442c75b57baac00506d4960b90b35eca
 }
 
 int Usuario::menu_usu(){

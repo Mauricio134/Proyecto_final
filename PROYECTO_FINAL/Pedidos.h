@@ -15,6 +15,10 @@ class Pedidos{
         string mes;
         string ano;
         string tipo;
+		string auxusu;
+		string auxdia;
+		string auxmes;
+		string auxano;
         double precio;
         int sum;
         int cantidad;
@@ -24,8 +28,9 @@ class Pedidos{
 
         Pedidos();
 
-        void mostrar();
+        void mostrar_pedidos();
         void registrar_pedido(string );
         void pasteles_opciones();
+		void eliminar_pedido();
         int Caja_o_personal();
 };
