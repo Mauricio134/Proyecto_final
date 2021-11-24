@@ -13,7 +13,6 @@ class Suministros{
         string cantidad;
 
         Suministros();
-
         bool agregar_produ();
         bool ver_sumi();
         void mod_sumi();

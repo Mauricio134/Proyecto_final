@@ -5,7 +5,6 @@
 #include "Admin.h"
 #include "Cliente.h"
 #include "Suministros.h"
-#include "Pedidos.h"
 
 int main(){
 	system ("color f0");
@@ -19,15 +18,13 @@ int main(){
                 int op2;
                 do{
                     Usuario user1;
-			Administrador admin;
-			Cliente cli;
                     op2 = user1.menu_usu();
                     switch(op2){
                         case 1:
-							admin.Login();
+							user1.admin.Login();
                             break;
                         case 2:
-                            cli.Login();
+                            user1.cli.Login();
                             break;
                     }
                 }while(op2 != 3);
