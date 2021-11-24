@@ -19,6 +19,55 @@ Pedidos::Pedidos(){
     sum = 0;
 }
 
+void Pedidos::mostrar(){
+    system("cls");
+	int i=0;
+    ifstream lectura;
+    lectura.open("Pedidos.txt",ios::in);
+    if(lectura.is_open())
+    {
+        cout<<"\t\t\t\t***Listado de todos los Pedidos***\t\t\t\t\n\n";
+        getline(lectura,dni);
+        while(!lectura.eof())
+        {
+            i++;
+            getline(lectura,usuario);
+            getline(lectura,direccion);
+			getline(lectura,telefono);
+			getline(lectura,dia);
+			getline(lectura,mes);
+			getline(lectura,ano);
+			getline(lectura,tipo);
+            getline(lectura,dni);
+            cout<<"DNI: "<<usuario<<endl;
+			cout<<"Direccion: "<<direccion<<endl;
+			cout<<"Telefono: "<<telefono<<endl;
+			cout<<"Dia: "<<dia<<endl;
+			cout<<"Mes: "<<mes<<endl;
+			cout<<"Ano: "<<ano<<endl;
+			cout<<"Tipo de pedido: "<<tipo<<endl;
+			cout<<"Tipo de pedido: "<<fresa<<endl;
+			cout<<"Tipo de pedido: "<<coco<<endl;
+			cout<<"Tipo de pedido: "<<circulo<<endl;
+            cout << "--------------------------" << endl;
+            getline(lectura,dni);
+        }
+
+        if(i==1){
+            cout<<"Hay un solo pedido registrado \n\n";
+        }
+        else{
+            cout<<"Hay un total de "<< i <<" pedidos registrados \n\n";
+        }
+    }
+    else
+    {
+        cout << "No hay pedidos!!!" << endl;
+    }
+    lectura.close();
+    system("pause");
+}
+
 void Pedidos::pasteles_opciones(){
     system("cls");
     cout << "Digitar cantidad de Pasteles de Fresa (por caja): " << endl;
@@ -87,7 +136,7 @@ void Pedidos::registrar_pedido(string dniaux){
             cin >> dia;
             cout << "Colocar el Mes de Realizacion del Pedido (Enero = 01): ";
             cin >> mes;
-            cout << "Colocar el Año de Realizacion del Pedido: ";
+            cout << "Colocar el AÃ±o de Realizacion del Pedido: ";
             cin >> ano;
 
             Pedido_in << usuario << endl;
