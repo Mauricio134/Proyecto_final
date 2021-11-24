@@ -2,10 +2,9 @@
 #include "Login.h"
 #include "Register.h"
 
-class Cliente{
+class Cliente : public Usuario{
     public:
-        Registrar reg;
-        Loguear log;
+        Usuario log;
 
         Cliente();
 
