@@ -10,6 +10,15 @@ Suministros::Suministros(){
 	tamano=0;
 }
 
+Suministros::~Suministros(){
+    if (reg != nullptr && tamano > 0){
+        delete [] reg;
+        for (int o = 0; o < tamano; o++) {
+            delete [] reg[o];
+        }
+    }
+}
+
 bool Suministros::agregar_produ(){
 	ofstream escritura;
     ifstream verificador;
@@ -101,8 +110,6 @@ bool Suministros::agregar_produ(){
 
     else
     {
-        escritura.close();
-        verificador.close();
         return true;
     }
 }
@@ -110,24 +117,12 @@ bool Suministros::agregar_produ(){
 bool Suministros::ver_sumi(){
 	system("cls");
     int n = 0;
-<<<<<<< HEAD
-	int tamano = cont_sumi();
+	tamano = cont_sumi();
 
 	reg=new string*[tamano];
     for(int i=0;i<tamano;i++){
         reg[i]=new string[5];
     }
-	//string reg [tamano][5];
-
-=======
-	tamano = cont_sumi();
-	
-	reg=new string*[tamano];              
-    for(int i=0;i<tamano;i++){
-        reg[i]=new string[5];
-    }
-   
->>>>>>> eae6a8817734887324043d3101e5f8b330e4d8dd
 	ifstream lectura;
     lectura.open("suministros.txt", ios::in);
     if (lectura.is_open())
@@ -145,24 +140,14 @@ bool Suministros::ver_sumi(){
 
 
 			reg [n][0] = id;
-<<<<<<< HEAD
-
-			reg [n][1] = tipo;
-
-			reg [n][2] = marca;
-
-			reg [n][3] = precio;
-
-=======
 			reg [n][1] = tipo;
 			reg [n][2] = marca;
 			reg [n][3] = precio;
->>>>>>> eae6a8817734887324043d3101e5f8b330e4d8dd
 			reg [n][4] = cantidad;
-			
+
             getline(lectura, id);
 			n++;
-		
+
         }
 
 		for (int x = 0; x < tamano; x++){
@@ -194,12 +179,6 @@ bool Suministros::ver_sumi(){
             cout << "Hay un total de " << tamano << " suministros registrados en este almacen\n\n";
         }
         lectura.close();
-		for (int o = 0; o < tamano; o++) {
-			delete [] reg[o];
-			}
-		delete [] reg;
-		reg = nullptr;
-		
         system("pause");
         return false;
     }
@@ -212,8 +191,6 @@ bool Suministros::ver_sumi(){
 }
 
 void Suministros::mod_sumi(){
-
-
 	system ("cls");
 	string idaux;
 	string cantidadaux;

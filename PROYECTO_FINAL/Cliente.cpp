@@ -7,8 +7,12 @@ Cliente::Cliente(){
 }
 
 Cliente::~Cliente(){
-    delete [] regc;
-    delete [] regc;
+    if (regc != nullptr && tamano > 0){
+        delete [] regc;
+        for (int o = 0; o < tamano; o++) {
+            delete [] regc[o];
+        }
+    }
 }
 
 bool Cliente::registrarse_cli(){
@@ -199,23 +203,13 @@ int Cliente::cont_cli(){
 void Cliente::Mostrar_registro(){
     system("cls");
     int n = 0;
-<<<<<<< HEAD
-	int tamano = cont_cli();
-
-	regc=new string*[tamano];              // Uso de punteros con obs para poder almacenar los obstaculos
-    for(int i=0;i<tamano;i++){
-        regc[i]=new string[5];
-    }
-
-=======
 	tamano = cont_cli();
-	
-	regc=new string*[tamano];              
+
+	regc=new string*[tamano];
     for(int i=0;i<tamano;i++){
         regc[i]=new string[5];
     }
-    
->>>>>>> eae6a8817734887324043d3101e5f8b330e4d8dd
+
 	ifstream lectura;
     lectura.open("clientes.txt", ios::in);
     if (lectura.is_open())
@@ -230,10 +224,6 @@ void Cliente::Mostrar_registro(){
             getline(lectura, direccion);
             getline(lectura, telefono);
             getline(lectura, dni);
-<<<<<<< HEAD
-=======
-           
->>>>>>> eae6a8817734887324043d3101e5f8b330e4d8dd
 			regc [n][0] = contrasena;
 			regc [n][1] = usuario;
 			regc [n][2] = direccion;
@@ -272,18 +262,12 @@ void Cliente::Mostrar_registro(){
             cout << "Hay un total de " << tamano << " clientes registrados en programa\n\n";
         }
         lectura.close();
-		
-		for (int o = 0; o < tamano; o++) {
-		delete [] regc[o];
-		}
-		delete [] regc;
-		regc=nullptr;
-		
         system("pause");
 
     }
     else
     {
+        cout << "No hay registros...." << endl;
         lectura.close();
         system("pause");
     }

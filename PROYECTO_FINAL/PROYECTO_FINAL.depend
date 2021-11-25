@@ -29,10 +29,10 @@
 	<iostream>
 	<fstream>
 
-1637768870 source:c:\users\usuario\git\proyecto_final\proyecto_final\cliente.cpp
+1637868265 source:c:\users\usuario\git\proyecto_final\proyecto_final\cliente.cpp
 	"Cliente.h"
 
-1637769771 c:\users\usuario\git\proyecto_final\proyecto_final\cliente.h
+1637852445 c:\users\usuario\git\proyecto_final\proyecto_final\cliente.h
 	<iostream>
 	<fstream>
 	"Usuario.h"
@@ -60,17 +60,18 @@
 1637718623 source:c:\users\usuario\git\proyecto_final\proyecto_final\funcion.cpp
 	"Funcion.h"
 
-1637767906 c:\users\usuario\git\proyecto_final\proyecto_final\suministros.h
+1637861256 c:\users\usuario\git\proyecto_final\proyecto_final\suministros.h
 	<iostream>
 	<fstream>
 
-1637768391 source:c:\users\usuario\git\proyecto_final\proyecto_final\suministros.cpp
+1637861360 source:c:\users\usuario\git\proyecto_final\proyecto_final\suministros.cpp
 	"Suministros.h"
 
-1637769298 c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.h
+1637868723 c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.h
 	<iostream>
 	<fstream>
+	<iomanip>
 
-1637767906 source:c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.cpp
+1637870662 source:c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.cpp
 	"Pedidos.h"
 
