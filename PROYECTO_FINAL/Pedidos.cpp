@@ -124,7 +124,6 @@ void Pedidos::mostrar_pedidos(){
             cout << "Costo: " << "s/." << reg [n][10] << endl;
             cout << "--------------------------" << endl;
         }
-
         if(i==1){
             cout<<"Hay un solo pedido registrado \n\n";
         }
@@ -300,6 +299,7 @@ void Pedidos::eliminar_pedido(){
             }
             else {
                 aux << usuario << endl;
+                aux << direccion << endl;
                 aux << telefono << endl;
                 aux << dia << endl;
                 aux << mes << endl;
@@ -316,7 +316,6 @@ void Pedidos::eliminar_pedido(){
         }
         Lect.close();
         aux.close();
-        system("pause");
     }
     else {
         cout << "Error" << endl;
