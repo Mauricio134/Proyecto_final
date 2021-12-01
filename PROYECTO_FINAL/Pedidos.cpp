@@ -26,10 +26,10 @@ Pedidos::Pedidos(){
 
 Pedidos::~Pedidos(){
     if (reg != nullptr && tamano > 0){
-        delete [] reg;
         for (int o = 0; o < tamano; o++) {
             delete [] reg[o];
         }
+        delete [] reg;
     }
 }
 

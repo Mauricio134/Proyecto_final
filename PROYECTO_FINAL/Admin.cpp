@@ -147,8 +147,8 @@ void Administrador::loguearse_admin(){
 }
 
 int Administrador::menu_admin(){
-    int num;
     system("cls");
+    int num;
     cout << "<<-------Bienvenido "<< usuario << "------->>" << endl;
     cout << "1. Mostrar Usuarios" << endl;
     cout << "2. Eliminar Usuarios" << endl;

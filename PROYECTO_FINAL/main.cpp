@@ -33,6 +33,7 @@ int main(){
                 system("cls");
                 int cliente_o_admin;
                 do{
+                    system("cls");
                     Administrador admin;
                     Cliente cli;
                     cout << "<<-------Tipo de Usuario------->>" << endl;

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1637768932 source:c:\users\usuario\git\proyecto_final\proyecto_final\main.cpp
+1637939066 source:c:\users\usuario\git\proyecto_final\proyecto_final\main.cpp
 	"Funcion.h"
 	"Usuario.h"
 	"Admin.h"
@@ -12,7 +12,7 @@
 	"Cliente.h"
 	"Suministros.h"
 
-1637718724 c:\users\usuario\git\proyecto_final\proyecto_final\funcion.h
+1638396938 c:\users\usuario\git\proyecto_final\proyecto_final\funcion.h
 	<iostream>
 	<fstream>
 	<stdlib.h>
@@ -29,7 +29,7 @@
 	<iostream>
 	<fstream>
 
-1637868265 source:c:\users\usuario\git\proyecto_final\proyecto_final\cliente.cpp
+1638189552 source:c:\users\usuario\git\proyecto_final\proyecto_final\cliente.cpp
 	"Cliente.h"
 
 1637852445 c:\users\usuario\git\proyecto_final\proyecto_final\cliente.h
@@ -38,10 +38,10 @@
 	"Usuario.h"
 	"Pedidos.h"
 
-1637769200 source:c:\users\usuario\git\proyecto_final\proyecto_final\admin.cpp
+1638189579 source:c:\users\usuario\git\proyecto_final\proyecto_final\admin.cpp
 	"Admin.h"
 
-1637769099 c:\users\usuario\git\proyecto_final\proyecto_final\admin.h
+1638393898 c:\users\usuario\git\proyecto_final\proyecto_final\admin.h
 	<iostream>
 	<fstream>
 	"Usuario.h"
@@ -64,7 +64,7 @@
 	<iostream>
 	<fstream>
 
-1637861360 source:c:\users\usuario\git\proyecto_final\proyecto_final\suministros.cpp
+1638189482 source:c:\users\usuario\git\proyecto_final\proyecto_final\suministros.cpp
 	"Suministros.h"
 
 1637868723 c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.h
@@ -72,6 +72,6 @@
 	<fstream>
 	<iomanip>
 
-1637878323 source:c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.cpp
+1637939521 source:c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.cpp
 	"Pedidos.h"
 

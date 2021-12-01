@@ -8,14 +8,15 @@ Cliente::Cliente(){
 
 Cliente::~Cliente(){
     if (regc != nullptr && tamano > 0){
-        delete [] regc;
         for (int o = 0; o < tamano; o++) {
             delete [] regc[o];
         }
+        delete [] regc;
     }
 }
 
 bool Cliente::registrarse_cli(){
+    system("cls");
     ofstream escritura;
     ifstream verificador;
     string auxCodigo;
@@ -107,6 +108,7 @@ bool Cliente::registrarse_cli(){
 }
 
 void Cliente::loguearse_cli(){
+    system("cls");
     cout << "<----- LogIn ----->" << endl;
     cout << "Usuario: ";
     cin >> usuaux;
@@ -143,7 +145,6 @@ void Cliente::loguearse_cli(){
 }
 
 void Cliente::Eliminar_registro(){
-
     system("cls");
     ifstream Lectura("clientes.txt", ios::in);
     ofstream aux("Auxiliar.txt", ios::out);

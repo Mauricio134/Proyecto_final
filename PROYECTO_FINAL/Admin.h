@@ -11,7 +11,7 @@ using namespace std;
 
 class Administrador : public Usuario{
     public:
-        string id; //admin
+        string id;
 
         Administrador();
 
