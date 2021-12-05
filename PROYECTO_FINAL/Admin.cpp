@@ -14,9 +14,11 @@ bool Administrador::registrarse_admin()
     escritura.open("Admin.txt",ios::out | ios::app);
     if(escritura.is_open()&&verificador.is_open())
     {
-        cout<<"<----- Registrar Contrasena ----->";
-        fflush(stdin);
         system("cls");
+        cout << "==============================================" << endl;
+        cout << "||           REGISTRAR CONTRASENA           ||" << endl;
+        cout << "==============================================" << endl;
+        fflush(stdin);
         cout<<"Ingrese su contrasena: ";
         cin >> auxCodigo;
         if(auxCodigo == "")
@@ -62,7 +64,9 @@ bool Administrador::registrarse_admin()
         while(coincidencia==true);
         system("cls");
         contrasena = auxCodigo;
-        cout<<"<----- Registrarse como Administrador ----->" << endl;
+        cout << "======================================================" << endl;
+        cout << "||           REGISTRAR COMO ADMINISTRADOR           ||" << endl;
+        cout << "======================================================" << endl;
         cout<<"Contrasena: ";
         cout<< contrasena << endl;
         fflush(stdin);
@@ -74,24 +78,30 @@ bool Administrador::registrarse_admin()
 
         escritura << contrasena <<"\n"<< usuario <<"\n"<< id << endl;
 
-        cout<<"El registro se ha completado correctamente." << endl;
+        cout << "======================================================" << endl;
+        cout << "||                 REGISTRO EXITOSO                 ||" << endl;
+        cout << "======================================================" << endl;
+        escritura.close();
+        verificador.close();
+        system("pause");
         return false;
     }
 
     else
     {
+        escritura.close();
+        verificador.close();
+        system("pause");
         return true;
     }
-
-    escritura.close();
-    verificador.close();
-	system("pause");
 }
 
 void Administrador::loguearse_admin(){
     system("cls");
     ifstream Admin_lec("Admin.txt", ios::in);
-    cout << "<----- LogIn ----->" << endl;
+    cout << "===============================" << endl;
+    cout << "||           LOGIN           ||" << endl;
+    cout << "===============================" << endl;
     cout << "Usuario: ";
     cin >> usuaux;
     cout << "Contrasena: ";
@@ -133,14 +143,21 @@ void Administrador::loguearse_admin(){
                     case 7:
 						pedidos.eliminar_pedido();
                         break;
+                    case 8:
+						if (registrarse_admin() == true){
+                            error();
+                        };
+                        break;
                 }
-            }while(op != 8);
+            }while(op != 9);
             encontrado = true;
         }
         Admin_lec >> contrasena;
     }
     if (!encontrado){
-        cout << "El usuario y/o contrasena no es correcto..." << endl;
+        cout << "======================================================" << endl;
+        cout << "||       EL USUARIO Y/O CONTRSENA INCORRECTOS       ||" << endl;
+        cout << "======================================================" << endl;
     }
     Admin_lec.close();
     system("pause");
@@ -149,15 +166,20 @@ void Administrador::loguearse_admin(){
 int Administrador::menu_admin(){
     system("cls");
     int num;
-    cout << "<<-------Bienvenido "<< usuario << "------->>" << endl;
-    cout << "1. Mostrar Usuarios" << endl;
-    cout << "2. Eliminar Usuarios" << endl;
-    cout << "3. Registrar Suministros" << endl;
-    cout << "4. Modificar Suministros" << endl;
-    cout << "5. Mostrar Suministros" << endl;
-    cout << "6. Lista de Pedidos" << endl;
-    cout << "7. Eliminar Pedidos" << endl;
-    cout << "8. Salir" << endl;
+    cout << "===============================================" << endl;
+    cout << "||           BIENVENIDO ADMINISTRADOR        ||" << endl;
+    cout << "===============================================" << endl;
+    cout << "===============================================" << endl;
+    cout << "|| [1] Mostrar Usuarios                      ||" << endl;
+    cout << "|| [2] Eliminar Usuarios                     ||" << endl;
+    cout << "|| [3] Registrar Suministros                 ||" << endl;
+    cout << "|| [4] Modificar Suministros                 ||" << endl;
+    cout << "|| [5] Mostrar Suministros                   ||" << endl;
+    cout << "|| [6] Lista de Pedidos                      ||" << endl;
+    cout << "|| [7] Eliminar Pedidos                      ||" << endl;
+    cout << "|| [8] Registrar un Admin Nuevo              ||" << endl;
+    cout << "|| [9] Salir                                 ||" << endl;
+    cout << "===============================================" << endl;
     cout << "Opcion: ";
     cin >> num;
     return num;

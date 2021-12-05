@@ -25,9 +25,11 @@ bool Cliente::registrarse_cli(){
     escritura.open("clientes.txt",ios::out | ios::app);
     if(escritura.is_open()&&verificador.is_open())
     {
-        cout<<"<----- Registrarse ----->";
-        fflush(stdin);
         system("cls");
+        cout << "==============================================" << endl;
+        cout << "||           REGISTRAR CONTRASENA           ||" << endl;
+        cout << "==============================================" << endl;
+        fflush(stdin);
         cout<<"Ingrese su contrasena: ";
         cin >> auxCodigo;
         if(auxCodigo == "")
@@ -75,7 +77,9 @@ bool Cliente::registrarse_cli(){
         while(coincidencia==true);
         system("cls");
         contrasena = auxCodigo;
-        cout<<"<----- Registrarse como Cliente ----->" << endl;
+        cout << "======================================================" << endl;
+        cout << "||              REGISTRAR COMO CLIENTE              ||" << endl;
+        cout << "======================================================" << endl;
         cout<<"Contrasena: ";
         cout<< contrasena << endl;
         fflush(stdin);
@@ -93,23 +97,29 @@ bool Cliente::registrarse_cli(){
 
         escritura << contrasena <<"\n"<< usuario <<"\n"<< direccion <<"\n"<< telefono <<"\n"<< dni << endl;
 
-        cout<<"El registro se ha completado correctamente." << endl;
+        cout << "======================================================" << endl;
+        cout << "||                 REGISTRO EXITOSO                 ||" << endl;
+        cout << "======================================================" << endl;
+        escritura.close();
+        verificador.close();
+        system("pause");
 
         return false;
     }
     else
     {
+        escritura.close();
+        verificador.close();
+        system("pause");
         return true;
     }
-
-    escritura.close();
-    verificador.close();
-	system("pause");
 }
 
 void Cliente::loguearse_cli(){
     system("cls");
-    cout << "<----- LogIn ----->" << endl;
+    cout << "===========================================" << endl;
+    cout << "||                 LOGIN                 ||" << endl;
+    cout << "===========================================" << endl;
     cout << "Usuario: ";
     cin >> usuaux;
     cout << "Contrasena: ";
@@ -138,7 +148,9 @@ void Cliente::loguearse_cli(){
         Cli_lec >> usuario;
     }
     if (!encontrado){
-        cout << "El usuario y/o contrasena no es correcto..." << endl;
+        cout << "======================================================" << endl;
+        cout << "||       EL USUARIO Y/O CONTRSENA INCORRECTOS       ||" << endl;
+        cout << "======================================================" << endl;
     }
     Cli_lec.close();
 	system("pause");
@@ -160,7 +172,9 @@ void Cliente::Eliminar_registro(){
             Lectura >> dni;
             if (dni == dniaux){
                 cout << "Contrasena: " << contrasena <<"\n"<< "Usuario: " << usuario <<"\n"<< "Direccion: " << direccion <<"\n"<< "Telefono: " << telefono <<"\n"<< "DNI: " << dni << endl;
-                cout << "\t!!!! Registro Eliminado !!!!" << endl;
+                cout << "======================================================" << endl;
+                cout << "||                REGISTRO ELIMINADO                ||" << endl;
+                cout << "======================================================" << endl;
             } else {
                 aux << contrasena <<"\n"<< usuario <<"\n"<< direccion <<"\n"<< telefono <<"\n"<< dni << endl;
             }
@@ -171,7 +185,9 @@ void Cliente::Eliminar_registro(){
         aux.close();
         system("pause");
     }else{
-        cout << "Error" << endl;
+        cout << "=====================" << endl;
+        cout << "||      ERROR      ||" << endl;
+        cout << "=====================" << endl;
     }
 
     remove("clientes.txt");
@@ -216,7 +232,9 @@ void Cliente::Mostrar_registro(){
     if (lectura.is_open())
     {
 		lectura.seekg(0);
-        cout << "\t\t\t\t***Listado de todos los clientes***\t\t\t\t\n\n";
+        cout << "================================================" << endl;
+        cout << "||             LISTADO DE CLIENTES            ||" << endl;
+        cout << "================================================" << endl;
         getline(lectura, contrasena);
         while (!lectura.eof())
         {
@@ -257,10 +275,14 @@ void Cliente::Mostrar_registro(){
 			cout << "--------------------------" << endl;
 		}
         if (tamano == 1) {
-            cout << "Hay un solo cliente registrado en este programa\n\n";
+            cout << "================================================" << endl;
+            cout << "||       HAY SOLO 1 CLIENTE REGISTRADO        ||" << endl;
+            cout << "================================================" << endl;
         }
         else {
-            cout << "Hay un total de " << tamano << " clientes registrados en programa\n\n";
+            cout << "================================================" << endl;
+            cout << "||         HAY " << tamano << " CLIENTE REGISTRADOS          ||" << endl;
+            cout << "================================================" << endl;
         }
         lectura.close();
         system("pause");
@@ -268,7 +290,9 @@ void Cliente::Mostrar_registro(){
     }
     else
     {
-        cout << "No hay registros...." << endl;
+        cout << "================================================" << endl;
+        cout << "||             NO HAY REGISTROS               ||" << endl;
+        cout << "================================================" << endl;
         lectura.close();
         system("pause");
     }
@@ -277,9 +301,13 @@ void Cliente::Mostrar_registro(){
 int Cliente::menu_cli(){
     int num;
     system("cls");
-    cout << "<<-------Bienvenido "<< usuario << "------->>" << endl;
-    cout << "1. Realizar Pedido" << endl;
-    cout << "2. Salir" << endl;
+    cout << "===============================================" << endl;
+    cout << "||           BIENVENIDO " << usuario << "          ||" << endl;
+    cout << "===============================================" << endl;
+    cout << "===============================================" << endl;
+    cout << "|| [1] Realizar Pedido                       ||" << endl;
+    cout << "|| [2] Salir                                 ||" << endl;
+    cout << "===============================================" << endl;
     cout << "Opcion: ";
     cin >> num;
     return num;

@@ -66,7 +66,9 @@ void Pedidos::mostrar_pedidos(){
     ifstream lectura("Pedidos.txt",ios::in);
     if(lectura.is_open())
     {
-        cout<<"\t\t\t\t***Listado de todos los Pedidos***\t\t\t\t\n\n";
+        cout << "================================================" << endl;
+        cout << "||             LISTADO DE PEDIDOS             ||" << endl;
+        cout << "================================================" << endl;
         lectura >> usuario;
         while(!lectura.eof())
         {
@@ -125,17 +127,23 @@ void Pedidos::mostrar_pedidos(){
             cout << "--------------------------" << endl;
         }
         if(i==1){
-            cout<<"Hay un solo pedido registrado \n\n";
+            cout << "================================================" << endl;
+            cout << "||        HAY SOLO 1 PEDIDO REGISTRADO        ||" << endl;
+            cout << "================================================" << endl;
         }
         else{
-            cout<<"Hay un total de "<< i <<" pedidos registrados \n\n";
+            cout << "================================================" << endl;
+            cout << "||         HAY " << tamano << " PEDIDOS REGISTRADOS          ||" << endl;
+            cout << "================================================" << endl;
         }
         lectura.close();
         system("pause");
     }
     else
     {
-        cout << "No hay pedidos!!!" << endl;
+        cout << "================================================" << endl;
+        cout << "||              NO HAY PEDIDOS                ||" << endl;
+        cout << "================================================" << endl;
         lectura.close();
         system("pause");
     }

@@ -34,27 +34,25 @@ int main(){
                 int cliente_o_admin;
                 do{
                     system("cls");
-                    Administrador admin;
                     Cliente cli;
-                    cout << "<<-------Tipo de Usuario------->>" << endl;
-                    cout << "1. Administrador" << endl;
-                    cout << "2. Cliente" << endl;
-                    cout << "3. Retornar al Menu"<< endl;
-                    cout<<"Opcion: ";
+                    cout << "=========================================" << endl;
+                    cout << "||           TIPO DE USUARIO           ||" << endl;
+                    cout << "=========================================" << endl;
+                    cout << "=========================================" << endl;
+                    cout << "|| [1] Cliente                         ||" << endl;
+                    cout << "|| [2] Retornar al Menu                ||"<< endl;
+                    cout << "=========================================" << endl;
+                    cout << "OPCION: ";
                     cin>> cliente_o_admin;
+
                     switch(cliente_o_admin){
 						case 1:
-							if(admin.registrarse_admin() == true){
-                                error();
-							}
-							break;
-						case 2:
 							if (cli.registrarse_cli() == true){
                                 error();
 							}
 							break;
 					}
-                }while(cliente_o_admin != 3);
+                }while(cliente_o_admin != 2);
                 break;
         }
     }while(op != 3);

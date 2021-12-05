@@ -3,38 +3,14 @@
 int menu(){
     int x;
     system("cls");
-    cout << "<<-------Bienvenido------->>" << endl;
-    cout << "1. Ingresar" << endl;
-    cout << "2. Registrarse" << endl;
-    cout << "3. Salir" << endl;
-    cout << "Opcion: ";
-    cin >> x;
-    return x;
-}
-
-int menu_admin(){
-    int x;
-    system("cls");
-    cout << "<<-------Bienvenido------->>" << endl;
-    cout << "1. Mostrar Usuarios" << endl;
-    cout << "2. Eliminar Usuarios" << endl;
-    cout << "3. Registrar Suministros" << endl;
-    cout << "4. Modificar Suministros" << endl;
-    cout << "5. Mostrar Suministros" << endl;
-    cout << "6. Lista de Pedidos" << endl;
-    cout << "7. Eliminar Pedidos" << endl;
-    cout << "8. Salir" << endl;
-    cout << "Opcion: ";
-    cin >> x;
-    return x;
-}
-
-int menu_cli(){
-    int x;
-    system("cls");
-    cout << "<<-------Bienvenido------->>" << endl;
-    cout << "1. Realizar Pedido" << endl;
-    cout << "2. Salir" << endl;
+    cout << "====================================" << endl;
+    cout << "||           BIENVENIDO           ||" << endl;
+    cout << "====================================" << endl;
+    cout << "====================================" << endl;
+    cout << "|| [1] Ingresar                   ||" << endl;
+    cout << "|| [2] Registrarse                ||" << endl;
+    cout << "|| [3] Salir                      ||" << endl;
+    cout << "====================================" << endl;
     cout << "Opcion: ";
     cin >> x;
     return x;

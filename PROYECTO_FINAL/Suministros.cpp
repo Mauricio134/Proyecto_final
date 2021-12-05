@@ -28,7 +28,9 @@ bool Suministros::agregar_produ(){
     escritura.open("suministros.txt",ios::out | ios::app);
     if(escritura.is_open()&&verificador.is_open())
     {
-        cout<<"<----- Agregar un suministro ----->";
+        cout << "===============================================" << endl;
+        cout << "||           AGREGAR UN SUMINISTRO           ||" << endl;
+        cout << "===============================================" << endl;
         fflush(stdin);
         system("cls");
         cout<<"Ingrese una id para el suministro: ";
@@ -54,7 +56,7 @@ bool Suministros::agregar_produ(){
                 if(id == auxCodigo)
                 {
                     coincidencia=true;
-                    cout<<"Ya existe un suministro con esa id!" << endl;
+                    cout<<"Ya existe un suministro con esa ID" << endl;
                     cout<<"El suministro con esa id es: "<< tipo << endl;
                     cout<<"Ingresa una id diferente!: ";
                     cin >> auxCodigo;
@@ -78,30 +80,34 @@ bool Suministros::agregar_produ(){
         while(coincidencia==true);
         system("cls");
         id = auxCodigo;
-        cout<<"\t\t\t\t***Registrar un suministro***\t\t\t\t\n\n";
-        cout<<"Ingresa el id del Suministro: ";
-        cout<<id;
-        cout<<"\n\n";
+        cout << "=================================================" << endl;
+        cout << "||           REGISTRAR UN SUMINISTRO           ||" << endl;
+        cout << "=================================================" << endl;
+        cout << "Ingresa el id del Suministro: ";
+        cout << id << endl;
+        cout << "\n\n";
         fflush(stdin);
-        cout<<"Ingresa el nombre del Suministro: ";
+        cout << "Ingresa el nombre del Suministro: ";
         getline(cin,tipo);
-        cout<<"\n\n";
+        cout << "\n\n";
         fflush(stdin);
-        cout<<"Ingresa la marca del suministro: ";
+        cout << "Ingresa la marca del suministro: ";
         getline(cin,marca);
-        cout<<"\n\n";
+        cout << "\n\n";
         fflush(stdin);
-        cout<<"Ingresa el precio unitario del Suministro: ";
+        cout << "Ingresa el precio unitario del Suministro: ";
         getline(cin,precio);
-        cout<<"\n\n";
+        cout << "\n\n";
         fflush(stdin);
-        cout<<"Ingresa la cantidad del Suministro: ";
+        cout << "Ingresa la cantidad del Suministro: ";
         getline(cin,cantidad);
-        cout<<"\n\n";
+        cout << "\n\n";
 
         escritura <<id<<"\n"<<tipo<<"\n"<<marca<<"\n"<<precio<<"\n"<<cantidad<<"\n";
 
-        cout<<"El registro se ha completado correctamente." << endl;
+        cout << "===================================================" << endl;
+        cout << "||   EL REGISTRO SE HA REALIZADO COMPLETAMENTE   ||" << endl;
+        cout << "===================================================" << endl;
         escritura.close();
         verificador.close();
         system("pause");
@@ -128,7 +134,9 @@ bool Suministros::ver_sumi(){
     if (lectura.is_open())
     {
 		lectura.seekg(0);
-        cout << "\t\t\t\t***Listado de todos los suministros***\t\t\t\t\n\n";
+        cout << "================================================" << endl;
+        cout << "||           LISTADO DE SUMINISTROS           ||" << endl;
+        cout << "================================================" << endl;
         getline(lectura, id);
         while (!lectura.eof())
         {
@@ -153,19 +161,19 @@ bool Suministros::ver_sumi(){
 		for (int x = 0; x < tamano; x++){
 			for (int k = 0; k < 5; k++){
 				if (k==0){
-					cout << "Id: " <<reg [x][k] << endl;
+					cout << "Id: " << reg [x][k] << endl;
 				}
 				if (k==1){
-					cout << "Nombre: " <<reg [x][k] << endl;
+					cout << "Nombre: " << reg [x][k] << endl;
 				}
 				if (k==2){
-					cout << "Marca: " <<reg [x][k] << endl;
+					cout << "Marca: " << reg [x][k] << endl;
 				}
 				if (k==3){
-					cout << "Precio: S/" <<reg [x][k] << endl;
+					cout << "Precio: "<< " S/" << reg [x][k] << endl;
 				}
 				if (k==4){
-					cout << "Cantidad: " <<reg [x][k] << endl;
+					cout << "Cantidad: " <<  reg [x][k] << endl;
 				}
 
 			}
@@ -173,10 +181,14 @@ bool Suministros::ver_sumi(){
 
 		}
         if (tamano == 1) {
-            cout << "Hay un solo suministro registrado en este almacen\n\n";
+            cout << "================================================" << endl;
+            cout << "||      HAY SOLO 1 SUMINISTRO REGISTRADO      ||" << endl;
+            cout << "================================================" << endl;
         }
         else {
-            cout << "Hay un total de " << tamano << " suministros registrados en este almacen\n\n";
+            cout << "================================================" << endl;
+            cout << "||       HAY " << tamano << " SUMINISTROS REGISTRADOS        ||" << endl;
+            cout << "================================================" << endl;
         }
         lectura.close();
         system("pause");
@@ -222,7 +234,9 @@ void Suministros::mod_sumi(){
 		aux.close();
 	}
 	else{
-		cout << "Error" << endl;
+		cout << "=====================" << endl;
+        cout << "||      ERROR      ||" << endl;
+        cout << "=====================" << endl;
 	}
 	remove("suministros.txt");
 	rename("auxiliar.txt", "suministros.txt");
