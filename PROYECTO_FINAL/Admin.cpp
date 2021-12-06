@@ -147,9 +147,11 @@ void Administrador::loguearse_admin(){
 						if (registrarse_admin() == true){
                             error();
                         };
+                    case 9:
+                        if pedidos.reporte_mens();
                         break;
                 }
-            }while(op != 9);
+            }while(op != 10);
             encontrado = true;
         }
         Admin_lec >> contrasena;
@@ -178,7 +180,8 @@ int Administrador::menu_admin(){
     cout << "|| [6] Lista de Pedidos                      ||" << endl;
     cout << "|| [7] Eliminar Pedidos                      ||" << endl;
     cout << "|| [8] Registrar un Admin Nuevo              ||" << endl;
-    cout << "|| [9] Salir                                 ||" << endl;
+    cout << "|| [9] Reporte de ganancia por mes           ||" << endl;
+    cout << "|| [10] Salir                                ||" << endl;
     cout << "===============================================" << endl;
     cout << "Opcion: ";
     cin >> num;
