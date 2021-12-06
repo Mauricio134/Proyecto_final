@@ -148,7 +148,7 @@ void Administrador::loguearse_admin(){
                             error();
                         };
                     case 9:
-                        if pedidos.reporte_mens();
+                        pedidos.reporte_mens();
                         break;
                 }
             }while(op != 10);

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1638717085 source:c:\users\usuario\git\proyecto_final\proyecto_final\main.cpp
+1638763655 source:c:\users\usuario\git\proyecto_final\proyecto_final\main.cpp
 	"Funcion.h"
 	"Usuario.h"
 	"Admin.h"
@@ -12,7 +12,7 @@
 	"Cliente.h"
 	"Suministros.h"
 
-1638715213 c:\users\usuario\git\proyecto_final\proyecto_final\funcion.h
+1638763655 c:\users\usuario\git\proyecto_final\proyecto_final\funcion.h
 	<iostream>
 	<fstream>
 	<stdlib.h>
@@ -29,19 +29,19 @@
 	<iostream>
 	<fstream>
 
-1638734030 source:c:\users\usuario\git\proyecto_final\proyecto_final\cliente.cpp
+1638764765 source:c:\users\usuario\git\proyecto_final\proyecto_final\cliente.cpp
 	"Cliente.h"
 
-1638715213 c:\users\usuario\git\proyecto_final\proyecto_final\cliente.h
+1638763655 c:\users\usuario\git\proyecto_final\proyecto_final\cliente.h
 	<iostream>
 	<fstream>
 	"Usuario.h"
 	"Pedidos.h"
 
-1638734011 source:c:\users\usuario\git\proyecto_final\proyecto_final\admin.cpp
+1638763732 source:c:\users\usuario\git\proyecto_final\proyecto_final\admin.cpp
 	"Admin.h"
 
-1638715213 c:\users\usuario\git\proyecto_final\proyecto_final\admin.h
+1638763655 c:\users\usuario\git\proyecto_final\proyecto_final\admin.h
 	<iostream>
 	<fstream>
 	"Usuario.h"
@@ -50,28 +50,28 @@
 	"Pedidos.h"
 	"Funcion.h"
 
-1638724959 source:c:\users\usuario\git\proyecto_final\proyecto_final\usuario.cpp
+1638763655 source:c:\users\usuario\git\proyecto_final\proyecto_final\usuario.cpp
 	"Usuario.h"
 
-1637768585 c:\users\usuario\git\proyecto_final\proyecto_final\usuario.h
+1638763655 c:\users\usuario\git\proyecto_final\proyecto_final\usuario.h
 	<iostream>
 	<fstream>
 
-1638725483 source:c:\users\usuario\git\proyecto_final\proyecto_final\funcion.cpp
+1638763655 source:c:\users\usuario\git\proyecto_final\proyecto_final\funcion.cpp
 	"Funcion.h"
 
-1638724555 c:\users\usuario\git\proyecto_final\proyecto_final\suministros.h
+1638763655 c:\users\usuario\git\proyecto_final\proyecto_final\suministros.h
 	<iostream>
 	<fstream>
 
-1638725503 source:c:\users\usuario\git\proyecto_final\proyecto_final\suministros.cpp
+1638763655 source:c:\users\usuario\git\proyecto_final\proyecto_final\suministros.cpp
 	"Suministros.h"
 
-1638715213 c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.h
+1638763899 c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.h
 	<iostream>
 	<fstream>
 	<iomanip>
 
-1638731945 source:c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.cpp
+1638764491 source:c:\users\usuario\git\proyecto_final\proyecto_final\pedidos.cpp
 	"Pedidos.h"
 

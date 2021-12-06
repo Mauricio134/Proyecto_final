@@ -18,6 +18,8 @@ class Pedidos{
         string ano;
         string tipo;
 		string idaux;
+		string auxano, auxmes;
+
 		int cajas, pasteles;
         float precio;
         int sum;
