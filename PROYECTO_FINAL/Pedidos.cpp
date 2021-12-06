@@ -22,6 +22,8 @@ Pedidos::Pedidos(){
     sum = 0;
     reg = nullptr;
 	tamano = 0;
+	auxano = "";
+	auxmes = "";
 }
 
 Pedidos::~Pedidos(){
@@ -182,7 +184,9 @@ void Pedidos::registrar_pedido(string dniaux){
         Cli_lec>>telefono;
         Cli_lec>>dni;
         if (dni == dniaux){
-            cout << "<------Pedido------>" << endl;
+            cout << "================================================" << endl;
+            cout << "||                   PEDIDO                   ||" << endl;
+            cout << "================================================" << endl;
             int op;
             op = Caja_o_personal();
             do{
@@ -246,7 +250,9 @@ void Pedidos::registrar_pedido(string dniaux){
             Pedido_in << tipo << endl;
             Pedido_in << id << endl;
             system("cls");
-            cout << "<------Pedido------>" << endl;
+            cout << "================================================" << endl;
+            cout << "||                   PEDIDO                   ||" << endl;
+            cout << "================================================" << endl;
             cout << "Id: " << id << endl;
             cout << "Usuario: " << usuario << endl;
             cout << "Direccion: " << direccion << endl;
@@ -297,13 +303,17 @@ void Pedidos::eliminar_pedido(){
             Lect >> tipo;
             Lect >> id;
             if (id == idaux)  {
-                cout << "El pedido:" << endl;
+                cout << "================================================" << endl;
+                cout << "||                   PEDIDO                   ||" << endl;
+                cout << "================================================" << endl;
                 cout << "ID: " << id << endl;
 				cout << "Usuario: " << usuario << endl;
 				cout << "Direccion: " << direccion << endl;
 				cout << "Telefono: " << telefono << endl;
 				cout << "Fecha de Realizacion del Pedido: " << dia << "/" << mes << "/" << ano << endl;
-                cout << "\t!!!! Ha sido eliminado con exito !!!!" << endl;
+                cout << "======================================================" << endl;
+                cout << "||                REGISTRO ELIMINADO                ||" << endl;
+                cout << "======================================================" << endl;
             }
             else {
                 aux << usuario << endl;
@@ -345,23 +355,26 @@ void Pedidos::reporte_mens() {
         cin >> auxano;
         cout << "Ingrese el mes del cual desea el reporte: " << endl;
         cin >> auxmes;
-        cout << "\t\t\t\t***Reporte mensual***\t\t\t\t\n\n";
+        system("cls");
+        cout << "======================================================" << endl;
+        cout << "||                  REPORTE MENSUAL                 ||" << endl;
+        cout << "======================================================" << endl;
         lectura >> usuario;
         while (!lectura.eof())
         {
-
             lectura.ignore(10000, '\n');
-            getline(lectura, direccion);
+            getline(lectura,direccion);
             lectura >> telefono;
-            lectura >> dia;
-            lectura >> mes;
-            lectura >> ano;
-            lectura >> cantidad;
-            lectura >> fresa;
+			lectura >> dia;
+			lectura >> mes;
+			lectura >> ano;
+			lectura >> cantidad;
+			lectura >> fresa;
             lectura >> coco;
             lectura >> circulo;
             lectura >> precio;
             lectura >> tipo;
+            lectura >> id;
 
             if (auxmes == mes && auxano == ano) {
                 cout << "Usuario: " << usuario << " Dia: " << dia << " Mes: " << mes << " Precio: " << "s/." << precio << endl;
@@ -374,11 +387,12 @@ void Pedidos::reporte_mens() {
         cout << "Ventas del mes: " << "s/." << i << endl;
         cout << "--------------------------" << endl;
 
-
     }
     else
     {
-        cout << "No hay pedidos!!!" << endl;
+        cout << "================================================" << endl;
+        cout << "||              NO HAY PEDIDOS                ||" << endl;
+        cout << "================================================" << endl;
     }
     lectura.close();
     system("pause");

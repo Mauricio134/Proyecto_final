@@ -231,24 +231,25 @@ void Cliente::Mostrar_registro(){
     lectura.open("clientes.txt", ios::in);
     if (lectura.is_open())
     {
-		lectura.seekg(0);
         cout << "================================================" << endl;
         cout << "||             LISTADO DE CLIENTES            ||" << endl;
         cout << "================================================" << endl;
-        getline(lectura, contrasena);
+		lectura.seekg(0);
+        lectura >> contrasena;
         while (!lectura.eof())
         {
 
-            getline(lectura, usuario);
+            lectura >> usuario;
+            lectura.ignore(10000, '\n');
             getline(lectura, direccion);
-            getline(lectura, telefono);
-            getline(lectura, dni);
+            lectura >> telefono;
+            lectura >> dni;
 			regc [n][0] = contrasena;
 			regc [n][1] = usuario;
 			regc [n][2] = direccion;
 			regc [n][3] = telefono;
 			regc [n][4] = dni;
-            getline(lectura, contrasena);
+            lectura >> contrasena;
 			n++;
         }
 
@@ -256,7 +257,7 @@ void Cliente::Mostrar_registro(){
 			for (int k = 0; k < 5; k++){
 				if (k==1)
                 {
-					cout << "Nombre: " <<regc [x][k] << endl;
+					cout << "Nombre: " << regc [x][k] << endl;
 				}
 				if (k==2)
                 {
