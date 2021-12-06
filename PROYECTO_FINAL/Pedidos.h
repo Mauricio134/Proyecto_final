@@ -35,4 +35,5 @@ class Pedidos{
         void pasteles_opciones();
         int Caja_o_personal();
         int cont_ped();
+        void reporte_mens();
 };

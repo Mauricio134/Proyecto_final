@@ -333,3 +333,53 @@ void Pedidos::eliminar_pedido(){
     rename("Auxiliar.txt", "Pedidos.txt");
     system("pause");
 }
+
+void Pedidos::reporte_mens() {
+    system("cls");
+    int i = 0;
+    ifstream lectura;
+    lectura.open("Pedidos.txt", ios::in);
+    if (lectura.is_open())
+    {
+        cout << "Ingrese la anualidad de cual desea el reporte: " << endl;
+        cin >> auxano;
+        cout << "Ingrese el mes del cual desea el reporte: " << endl;
+        cin >> auxmes;
+        cout << "\t\t\t\t***Reporte mensual***\t\t\t\t\n\n";
+        lectura >> usuario;
+        while (!lectura.eof())
+        {
+
+            lectura.ignore(10000, '\n');
+            getline(lectura, direccion);
+            lectura >> telefono;
+            lectura >> dia;
+            lectura >> mes;
+            lectura >> ano;
+            lectura >> cantidad;
+            lectura >> fresa;
+            lectura >> coco;
+            lectura >> circulo;
+            lectura >> precio;
+            lectura >> tipo;
+
+            if (auxmes == mes && auxano == ano) {
+                cout << "Usuario: " << usuario << " Dia: " << dia << " Mes: " << mes << " Precio: " << "s/." << precio << endl;
+                i += precio;
+            }
+            lectura >> usuario;
+        }
+        cout << "\n";
+        cout << "--------------------------" << endl;
+        cout << "Ventas del mes: " << "s/." << i << endl;
+        cout << "--------------------------" << endl;
+
+
+    }
+    else
+    {
+        cout << "No hay pedidos!!!" << endl;
+    }
+    lectura.close();
+    system("pause");
+}
